@@ -6,7 +6,7 @@ import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import IsAnonym from "./components/IsAnonym";
 import IsPrivate from "./components/IsPrivate";
-import ActivityFilterPage from "./pages/ActivityFilterPage";
+import ActivityFilterPage from "./pages/FilterPage";
 
 function App() {
   return (
