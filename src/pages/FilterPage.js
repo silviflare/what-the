@@ -74,7 +74,7 @@ function ActivityFilterPage() {
           setSpace(e.target.value === "All" ? "" : e.target.value);
         }}
       >
-        <option value="" disabled selected hidden>
+        <option value="" disabled hidden>
           All
         </option>
         {spaces.map((space) => {
