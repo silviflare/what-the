@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import axios from "axios";
-
-const baseURL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005";
+import { API_URL } from "../config/config";
 
 function RandomActivity() {
   const [oneActivity, setActivity] = useState(null);
@@ -10,7 +8,7 @@ function RandomActivity() {
 
   const getRandomActivity = () => {
     axios
-      .get(`${baseURL}/api/random-activity`)
+      .get(`${API_URL}/api/random-activity`)
       .then((response) => {
         const oneActivity = response.data;
         setActivity(oneActivity);

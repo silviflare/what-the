@@ -7,6 +7,9 @@ import LoginPage from "./pages/LoginPage";
 import IsAnonym from "./components/IsAnonym";
 import IsPrivate from "./components/IsPrivate";
 import ActivityFilterPage from "./pages/FilterPage";
+import ActivityDetails from "./components/ActivityDetails";
+import AddActivity from "./components/AddActivity";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   return (
@@ -15,15 +18,47 @@ function App() {
 
       <Routes>
         <Route exact path="/" element={<HomePage />} />
+
         <Route
           exact
-          path="/activities"
+          path="/activitysearch"
           element={
             <IsPrivate>
               <ActivityFilterPage />
             </IsPrivate>
           }
         />
+
+        <Route
+          exact
+          path="/activities/:activityId"
+          element={
+            <IsPrivate>
+              <ActivityDetails />
+            </IsPrivate>
+          }
+        />
+
+        <Route
+          exact
+          path="/activities"
+          element={
+            <IsPrivate>
+              <AddActivity />
+            </IsPrivate>
+          }
+        />
+
+        <Route
+          exact
+          path="/profile/:userId"
+          element={
+            <IsPrivate>
+              <ProfilePage />
+            </IsPrivate>
+          }
+        />
+
         <Route
           path="/signup"
           element={
@@ -32,6 +67,7 @@ function App() {
             </IsAnonym>
           }
         />
+
         <Route
           path="/login"
           element={
