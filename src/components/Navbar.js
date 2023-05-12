@@ -17,7 +17,7 @@ function Navbar() {
             <button>Activity filter</button>
           </Link>
           <button onClick={logOutUser}>Logout</button>
-          <Link to={`/profile/${user._id}`}>
+          <Link to={`/profile`}>
             <span> Hola {user && user.name}</span>
           </Link>
         </>

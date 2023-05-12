@@ -51,7 +51,7 @@ function App() {
 
         <Route
           exact
-          path="/profile/:userId"
+          path="/profile"
           element={
             <IsPrivate>
               <ProfilePage />
