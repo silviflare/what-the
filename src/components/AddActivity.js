@@ -15,6 +15,8 @@ function AddActivity(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const storedToken = localStorage.getItem("authToken");
+
     const requestBody = {
       type,
       time,
@@ -27,7 +29,9 @@ function AddActivity(props) {
     };
 
     axios
-      .post(`${API_URL}/api/activities`, requestBody)
+      .post(`${API_URL}/api/activities`, requestBody, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         setName("");
         setDescription("");
@@ -38,7 +42,7 @@ function AddActivity(props) {
         setTime("");
         setSpace("");
 
-        // props.refreshActivities();
+        props.onCreateSuccess();
       })
       .catch((err) => console.log(err));
   };

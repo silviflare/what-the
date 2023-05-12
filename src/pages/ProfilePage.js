@@ -1,43 +1,50 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config/config";
 import AddActivity from "../components/AddActivity";
+import Button from "@mui/material/Button";
 
-// new
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 
 function ProfilePage(props) {
-  // Opt 2
+  const [favs, setFavs] = useState([]);
+  const [myActivities, setMyActivities] = useState([]);
+  const [visible, setVisible] = useState(false);
   const { user } = useContext(AuthContext);
-  console.log("profile page user", user);
 
-  //Opt 1
-  /* 
-    const [user, setUser] = useState(null);
-    const { userId } = useParams();
-
-    const getUser = () => {
+  const getFavs = () => {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .get(
-        // `${API_URL}/auth/profile/${userId}`
-        `${API_URL}/auth/profile/`,
-        { headers: { Authorization: `Bearer ${storedToken}` } }
-      )
-      .then((response) => {
-        const oneUser = response.data;
-        setUser(oneUser);
+      .get(`${API_URL}/api/myFavs`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
       })
-      .catch((err) => console.log(err)); 
-    };
-      */
+      .then((response) => {
+        const activities = response.data;
+        setFavs(activities);
+      })
+      .catch((err) => console.log(err));
+  };
 
-  /*   useEffect(() => {
-    getUser();
-  }, []); */
+  const getMyActivities = () => {
+    const storedToken = localStorage.getItem("authToken");
+
+    axios
+      .get(`${API_URL}/api/myActivities`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        const activities = response.data;
+        setMyActivities(activities);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    getFavs();
+    getMyActivities();
+  }, []);
 
   return (
     <div className="profile-user">
@@ -45,16 +52,27 @@ function ProfilePage(props) {
         <>
           <h1>Hello {user.name} !</h1>
           <p>Your email is: {user.email}</p>
+          <p>My favs</p>
+          {favs.map((fav) => (
+            <div key={fav._id}>
+              <h3>{fav.name}</h3>
+            </div>
+          ))}
+          <p>My activities</p>
+          {myActivities.map((activity) => (
+            <div key={activity._id}>
+              <h3>{activity.name}</h3>
+            </div>
+          ))}
         </>
       )}
 
-      {/*         <Link to={`/countries/${country.alpha3Code}`}>
+      <Button variant="contained" onClick={() => setVisible(!visible)}>
+        {" "}
+        Add activity{" "}
+      </Button>
 
-        </Link> */}
-
-      {/* Likes */}
-
-      {/* <AddActivity /> */}
+      {visible && <AddActivity onCreateSuccess={getMyActivities} />}
 
       {/* Map over the activities the user made */}
     </div>

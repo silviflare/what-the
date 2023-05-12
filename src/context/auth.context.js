@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import authService from "./../services/auth.service";
+import axios from "axios";
+import { API_URL } from "../config/config";
 
 // with auth.service, no more axios
 const AuthContext = React.createContext();
@@ -8,7 +10,6 @@ function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
-  console.log("USER: ", user);
 
   const storeToken = (token) => {
     localStorage.setItem("authToken", token);
@@ -26,11 +27,11 @@ function AuthProviderWrapper(props) {
         .then((response) => {
           // If the server verifies that the JWT token is valid
           const user = response.data;
-          console.log("RES: ", response.data);
           // Update state variables
           setIsLoggedIn(true);
           setIsLoading(false);
-          setUser(user);
+          // setUser(user);
+          getUserContext(user);
         })
         .catch((error) => {
           // If the server sends an error response (invalid token)
@@ -45,6 +46,20 @@ function AuthProviderWrapper(props) {
       setIsLoading(false);
       setUser(null);
     }
+  };
+
+  const getUserContext = () => {
+    const storedToken = localStorage.getItem("authToken");
+
+    axios
+      .get(`${API_URL}/auth/profile/`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        const oneUser = response.data;
+        setUser(oneUser);
+      })
+      .catch((err) => console.log(err));
   };
 
   const removeToken = () => {
@@ -72,6 +87,7 @@ function AuthProviderWrapper(props) {
         storeToken,
         authenticateUser,
         logOutUser,
+        getUserContext,
       }}
     >
       {props.children}

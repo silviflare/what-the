@@ -4,8 +4,8 @@ import { AuthContext } from "../context/auth.context";
 import authService from "./../services/auth.service";
 
 function LoginPage(props) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("silvia@gmail.com"); // TODO: delete !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  const [password, setPassword] = useState("Asdf_1234"); // TODO: delete !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
@@ -24,7 +24,6 @@ function LoginPage(props) {
       .then((response) => {
         // Request to the server's endpoint `/auth/login` returns a response
         // with the JWT string ->  response.data.authToken
-        console.log("JWT token", response.data.authToken);
 
         storeToken(response.data.authToken);
         authenticateUser();
