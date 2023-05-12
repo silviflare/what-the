@@ -13,6 +13,8 @@ function ActivityDetails(props) {
   const [address, setAddress] = useState("");
   const [mapsLink, setMapsLink] = useState("");
 
+  const [liked, setLiked] = useState(false);
+
   const [activity, setActivity] = useState(null);
   const { activityId } = useParams();
   const navigate = useNavigate();
@@ -32,12 +34,16 @@ function ActivityDetails(props) {
   }, []); */
 
   useEffect(() => {
+    const storedToken = localStorage.getItem("authToken");
     axios
-      .get(`${API_URL}/api/activities/${activityId}`)
+      .get(`${API_URL}/api/activities/${activityId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         const oneActivity = response.data;
         setActivity(oneActivity);
 
+        setLiked(oneActivity.isLiked);
         setType(oneActivity.type);
         setTime(oneActivity.time);
         setSpace(oneActivity.space);
@@ -84,6 +90,23 @@ function ActivityDetails(props) {
       .catch((err) => console.log(err));
   };
 
+  const handleLike = () => {
+    // Perform the "like" action
+    const storedToken = localStorage.getItem("authToken");
+
+    axios
+      .get(`${API_URL}/api/like/${activityId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        // Update the liked state
+        setLiked(!liked);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   if (!activity) {
     return (
       <div>
@@ -96,6 +119,7 @@ function ActivityDetails(props) {
     <div className="Activity Details">
       <h3>Activity Details</h3>
       <h3>{activity.name}</h3>
+      <button onClick={handleLike}>{liked ? "Liked" : "Like"}</button>
 
       <form onSubmit={handleFormSubmit}>
         <label>Name:</label>
