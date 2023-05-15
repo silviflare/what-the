@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import axios from "axios";
 import { API_URL } from "../config/config";
 
+// Material UI
+import { Collapse, IconButton } from "@mui/material";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import Filters from "./Filters";
+
 function RandomActivity() {
   const [oneActivity, setActivity] = useState(null);
-  // const { activityId } = useParams();
+  const [isOpen, setIsOpen] = useState(false);
+  const [filters, setFilters] = useState({});
+
+  const onFilterChange = useCallback((filterValues) => {
+    console.log("Filter valuessssssssssssss", filterValues);
+    setFilters(filterValues);
+  }, []);
 
   const getRandomActivity = () => {
     axios
-      .get(`${API_URL}/api/random-activity`)
+      .get(`${API_URL}/api/random-activity`, { params: filters })
       .then((response) => {
         const oneActivity = response.data;
         setActivity(oneActivity);
@@ -23,27 +35,23 @@ function RandomActivity() {
   }, []); */
 
   return (
-    <div className="random-activity">
-      <button onClick={getRandomActivity}>
-        What the f*** should I do today?
+    <div className="randonizer-container">
+      <button className="randonizer-button" onClick={getRandomActivity}>
+        <h1>What the f*** should I do today?</h1>
       </button>
 
-      {oneActivity && <h2>{oneActivity.description}</h2>}
+      <IconButton onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+      </IconButton>
+      <Collapse in={isOpen}>
+        <Filters onChange={onFilterChange} />
+      </Collapse>
 
-      {/*
-        oder:
-        <div className="activity-card">
-          <div>
-            <h3>{randomActivity.name}</h3>
-            <h2>{randomActivity.description}</h2>
-            <h3>{randomActivity.address}</h3>
-            <h3>{randomActivity.mapsLink}</h3>
-            <p>{randomActivity.type}</p>
-            <p>{randomActivity.neighborhood}</p>
-            <p>{randomActivity.space}</p>
-            <p>{randomActivity.time}</p>
-          </div>
-        </div> */}
+      <div className="randonizer-container-headline">
+        {oneActivity && (
+          <h2 className="randonizer-headline">{oneActivity.description}</h2>
+        )}
+      </div>
     </div>
   );
 }

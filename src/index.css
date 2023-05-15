@@ -1,13 +1,97 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100px;
+  padding: 0 30px;
+}
+
+.nav-right-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo-navbar {
+  font-size: 100px;
+  text-decoration: none;
+}
+
+.container-homepage {
+  background-color: #b199ff;
+  background-image: radial-gradient(
+      at 0% 0%,
+      hsla(0, 0%, 100%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 91% 11%, hsla(0, 0%, 100%, 1) 0px, transparent 50%),
+    radial-gradient(at 43% 43%, hsla(308, 88%, 73%, 1) 0px, transparent 50%),
+    radial-gradient(at 41% 86%, hsla(236, 100%, 73%, 1) 0px, transparent 50%),
+    radial-gradient(at 7% 92%, hsla(0, 0%, 100%, 1) 0px, transparent 50%),
+    radial-gradient(at 72% 24%, hsla(242, 100%, 73%, 1) 0px, transparent 50%),
+    radial-gradient(at 70% 100%, hsla(0, 0%, 100%, 1) 0px, transparent 50%),
+    radial-gradient(at 50% 40%, hsla(356, 100%, 73%, 1) 0px, transparent 50%),
+    radial-gradient(at 28% 59%, hsla(257, 100%, 73%, 1) 0px, transparent 50%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* min-height: calc(100vh - 100px); */
+  min-height: 100vh;
+}
+
+.randonizer-button {
+  width: 90vw;
+  align-self: center;
+  height: 80px;
+}
+
+.randonizer-container-headline {
+  height: 120px;
+  text-align: "center";
+  margin-bottom: "1rem";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid red;
+}
+
+.container-all {
+  position: relative;
+  top: 100px;
+  width: 90%;
+  margin: auto;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* min-height: calc(100vh - 100px); */
+  min-height: 100vh;
 }

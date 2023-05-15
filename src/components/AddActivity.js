@@ -2,15 +2,63 @@ import { useState } from "react";
 import axios from "axios";
 import { API_URL } from "../config/config";
 
+// Material UI
+import {
+  Checkbox,
+  FormControl,
+  Grid,
+  InputLabel,
+  ListItemText,
+  MenuItem,
+  OutlinedInput,
+  Select,
+  TextField,
+} from "@mui/material";
+import { SelectType } from "./SelectType";
+import { SelectTime } from "./SelectTime";
+
+// Settings Material UI
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
 function AddActivity(props) {
-  const [type, setType] = useState("");
-  const [time, setTime] = useState("");
+  const [type, setType] = useState([]);
+  const [time, setTime] = useState([]);
   const [space, setSpace] = useState("");
   const [neighborhood, setNeighborhood] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [address, setAddress] = useState("");
   const [mapsLink, setMapsLink] = useState("");
+
+  const neighborhoods = [
+    "Mitte",
+    "Neukölln",
+    "Friedrichshain",
+    "Kreuzberg",
+    "Charlottenburg",
+    "Wilmersdorf",
+    "Pankow",
+    "Prenzlauer Berg",
+    "Lichtenberg",
+    "Tempelhof",
+    "Schöneberg",
+    "Treptow",
+    "Köpenick",
+    "Steglitz",
+    "Marzahn",
+    "Reinickendorf",
+    "Spandau",
+    "Brandenburg",
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,8 +86,8 @@ function AddActivity(props) {
         setAddress("");
         setMapsLink("");
         setNeighborhood("");
-        setType("");
-        setTime("");
+        setType([]);
+        setTime([]);
         setSpace("");
 
         props.onCreateSuccess();
@@ -52,69 +100,125 @@ function AddActivity(props) {
       <h3>Add Activity</h3>
 
       <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+        <Grid
+          container
+          spacing={2}
+          // spacing={{ xs: 2, md: 3 }}
+          // columns={{ xs: 4, sm: 8, md: 12 }}
+        >
+          <Grid item xs={12} md={3}>
+            <TextField
+              fullWidth
+              id="outlined-basic"
+              label="Name activity"
+              variant="outlined"
+              name="Name activity"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </Grid>
 
-        <label>Description:</label>
-        <input
-          type="text"
-          name="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
+          <Grid item xs={12} md={9}>
+            <TextField
+              fullWidth
+              id="outlined-basic"
+              label="Description activity"
+              variant="outlined"
+              name="Description activity"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              helperText="Some important text"
+            />
+          </Grid>
 
-        <label>Address:</label>
-        <input
-          type="text"
-          name="address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
+          <Grid item xs={12} md={6}>
+            <SelectType value={type} setValue={setType} />
+          </Grid>
 
-        <label>Google Maps Link:</label>
-        <input
-          type="text"
-          name="mapsLink"
-          value={mapsLink}
-          onChange={(e) => setMapsLink(e.target.value)}
-        />
+          {/* <label>Type:</label>
+          <input
+            type="text"
+            name="type"
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+          /> */}
 
-        <label>Neighborhood:</label>
-        <input
-          type="text"
-          name="neighborhood"
-          value={neighborhood}
-          onChange={(e) => setNeighborhood(e.target.value)}
-        />
+          <Grid item xs={12} md={6}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">
+                Neighborhood
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={neighborhood}
+                onChange={(e) => {
+                  setNeighborhood(e.target.value);
+                }}
+                input={<OutlinedInput label="Neighborhood" />}
+                // renderValue={(selected) => selected.join(", ")}
+                MenuProps={MenuProps}
+              >
+                {neighborhoods.map((neighborhoodMap) => (
+                  <MenuItem key={neighborhoodMap} value={neighborhoodMap}>
+                    <Checkbox
+                      checked={neighborhood.indexOf(neighborhoodMap) > -1}
+                    />
+                    <ListItemText primary={neighborhoodMap || "All"} />
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
 
-        <label>Time:</label>
-        <input
-          type="text"
-          name="time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-        />
+          <Grid item xs={12} md={6}>
+            <TextField
+              fullWidth
+              id="outlined-basic"
+              label="Address"
+              variant="outlined"
+              name="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </Grid>
 
-        <label>Type:</label>
-        <input
-          type="text"
-          name="type"
-          value={type}
-          onChange={(e) => setType(e.target.value)}
-        />
+          <Grid item xs={12} md={6}>
+            <TextField
+              fullWidth
+              id="outlined-basic"
+              label="Link to Google Maps"
+              variant="outlined"
+              name="mapsLink"
+              value={mapsLink}
+              onChange={(e) => setMapsLink(e.target.value)}
+            />
+          </Grid>
 
-        <label>Space:</label>
-        <input
-          type="text"
-          name="space"
-          value={space}
-          onChange={(e) => setSpace(e.target.value)}
-        />
+          <Grid item xs={12} md={6}>
+            <SelectTime value={time} setValue={setTime} />
+          </Grid>
+
+          {/* <label>Time:</label>
+          <input
+            type="text"
+            name="time"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+          /> */}
+
+          <Grid item xs={12} md={6}>
+            <TextField
+              fullWidth
+              id="outlined-basic"
+              label="Indoor/Outdoor"
+              variant="outlined"
+              name="space"
+              value={space}
+              onChange={(e) => setSpace(e.target.value)}
+            />
+          </Grid>
+        </Grid>
 
         <input type="submit" value="Submit" />
       </form>

@@ -3,21 +3,31 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config/config";
 
-const times = ["All", "morning", "afternoon", "evening", "night"];
-const spaces = ["All", "indoor", "outdoor"];
-const types = [
-  "All",
-  "food",
-  "drinks",
-  "exhibition",
-  "tour",
-  "park",
-  "biergarten",
-  "party",
-  "drink",
-  "market",
-];
+// Styling
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import ListItemText from "@mui/material/ListItemText";
+import Select from "@mui/material/Select";
+import Checkbox from "@mui/material/Checkbox";
+import { Grid } from "@mui/material";
+import { SelectType } from "../components/SelectType";
+import { SelectTime } from "../components/SelectTime";
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
+// Input
+const spaces = ["", "Indoor", "Outdoor"];
 const neighborhoods = [
   "All",
   "Mitte",
@@ -41,10 +51,10 @@ const neighborhoods = [
 ];
 
 function ActivityFilterPage() {
-  const [type, setType] = useState("");
-  const [time, setTime] = useState("");
+  const [type, setType] = useState([]);
+  const [time, setTime] = useState([]);
   const [space, setSpace] = useState("");
-  const [neighborhood, setNeighborhood] = useState("");
+  const [neighborhood, setNeighborhood] = useState([]);
 
   const [activities, setActivities] = useState([]);
 
@@ -60,91 +70,76 @@ function ActivityFilterPage() {
   }, [type, time, space, neighborhood]);
 
   return (
-    <div>
+    <div className="container-all">
       <h1>Activity Filter</h1>
+      <Grid container spacing={2}>
+        {/* select indoor/outdoor */}
+        <Grid item xs={3}>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">
+              Indoor/Outdoor
+            </InputLabel>
 
-      {/* select indoor/outdoor */}
-      <label htmlFor="space">Indoor/Outdoor:</label>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={space}
+              label="Indoor/Outdoor"
+              onChange={(e) => {
+                setSpace(e.target.value);
+              }}
+            >
+              {spaces.map((spaceMap) => {
+                return (
+                  <MenuItem key={spaceMap} value={spaceMap.toLowerCase()}>
+                    {spaceMap || "All"}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          </FormControl>
+        </Grid>
 
-      <select
-        name="space"
-        id="space"
-        value={space}
-        onChange={(e) => {
-          setSpace(e.target.value === "All" ? "" : e.target.value);
-        }}
-      >
-        <option value="" disabled hidden>
-          All
-        </option>
-        {spaces.map((space) => {
-          return (
-            <option key={space} value={space}>
-              {space}
-            </option>
-          );
-        })}
-      </select>
+        {/* select type activity */}
+        <Grid item xs={3}>
+          <SelectType value={type} withAll setValue={setType} />
+        </Grid>
 
-      {/* select type activity */}
-      <label htmlFor="type">Select a type:</label>
+        {/* select time activity */}
+        <Grid item xs={3}>
+          <SelectTime value={time} withAll setValue={setTime} />
+        </Grid>
 
-      <select
-        name="type"
-        id="type"
-        value={type}
-        onChange={(e) => {
-          setType(e.target.value === "All" ? "" : e.target.value);
-        }}
-      >
-        {types.map((type) => {
-          return (
-            <option key={type} value={type}>
-              {type}
-            </option>
-          );
-        })}
-      </select>
-
-      {/* select time activity */}
-      <label htmlFor="time">Select a time:</label>
-
-      <select
-        name="time"
-        id="time"
-        value={time}
-        onChange={(e) => {
-          setTime(e.target.value === "All" ? "" : e.target.value);
-        }}
-      >
-        {times.map((time) => {
-          return (
-            <option key={time} value={time}>
-              {time}
-            </option>
-          );
-        })}
-      </select>
-
-      {/* select time neighborhood */}
-      <label htmlFor="neighborhood">Select a neighborhood:</label>
-
-      <select
-        name="neighborhood"
-        id="neighborhood"
-        value={neighborhood}
-        onChange={(e) => {
-          setNeighborhood(e.target.value === "All" ? "" : e.target.value);
-        }}
-      >
-        {neighborhoods.map((neighborhood) => {
-          return (
-            <option key={neighborhood} value={neighborhood}>
-              {neighborhood}
-            </option>
-          );
-        })}
-      </select>
+        {/* select time neighborhood */}
+        <Grid item xs={3}>
+          <FormControl fullWidth>
+            <InputLabel id="demo-multiple-checkbox-label">
+              Neighborhood
+            </InputLabel>
+            <Select
+              labelId="demo-multiple-checkbox-label"
+              id="demo-multiple-checkbox"
+              multiple
+              value={neighborhood}
+              onChange={(e) => {
+                setNeighborhood(e.target.value);
+              }}
+              input={<OutlinedInput label="Neighborhood" />}
+              renderValue={(selected) => selected.join(", ")}
+              MenuProps={MenuProps}
+            >
+              {neighborhoods.map((neighborhoodMap) => (
+                <MenuItem key={neighborhoodMap} value={neighborhoodMap}>
+                  <Checkbox
+                    checked={neighborhood.indexOf(neighborhoodMap) > -1}
+                  />
+                  <ListItemText primary={neighborhoodMap || "All"} />
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Grid>
+      </Grid>
 
       {/* Show filtered activities */}
       <h2>Activities</h2>
