@@ -155,6 +155,11 @@ h2 {
   font-size: 3rem;
 }
 
+.randonizer-container-headline a {
+  text-decoration: none;
+  color: #7087f7;
+}
+
 .randonizer-container-headline p {
   margin: 0;
 }

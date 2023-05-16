@@ -8,6 +8,8 @@ import { Collapse, IconButton } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Filters from "./Filters";
+import CallMadeIcon from "@mui/icons-material/CallMade";
+import { Link } from "react-router-dom";
 
 function RandomActivity() {
   const [oneActivity, setActivity] = useState(null);
@@ -55,7 +57,17 @@ function RandomActivity() {
       <div className="randonizer-container-headline">
         {oneActivity && (
           <div className="randonizer-headline">
-            <Balancer ratio={0.6}>{oneActivity.description}</Balancer>
+            <Balancer ratio={0.6}>
+              {oneActivity.description}
+
+              <Link
+                to={oneActivity.mapsLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ↗
+              </Link>
+            </Balancer>
           </div>
         )}
       </div>
