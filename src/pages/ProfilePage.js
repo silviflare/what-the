@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import { Link } from "react-router-dom";
 
 // Profile Page funtion
 
@@ -67,10 +68,14 @@ function ProfilePage(props) {
             <h1>Hello {user.name} !</h1>
             <p>Your email is: {user.email}</p>
 
-            <Button variant="contained" onClick={() => setVisible(!visible)}>
+            <Link to="/activities">
+              <Button variant="contained">Add activity</Button>
+            </Link>
+
+            {/* <Button variant="contained" onClick={() => setVisible(!visible)}>
               Add activity
             </Button>
-            {visible && <AddActivity onCreateSuccess={getMyActivities} />}
+            {visible && <AddActivity onCreateSuccess={getMyActivities} />} */}
 
             <Button variant="outlined" onClick={logOutUser}>
               Logout

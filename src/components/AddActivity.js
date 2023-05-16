@@ -4,6 +4,7 @@ import { API_URL } from "../config/config";
 
 // Material UI
 import {
+  Button,
   Checkbox,
   FormControl,
   Grid,
@@ -16,6 +17,7 @@ import {
 } from "@mui/material";
 import { SelectType } from "./SelectType";
 import { SelectTime } from "./SelectTime";
+import SaveIcon from "@mui/icons-material/Save";
 
 // Settings Material UI
 const ITEM_HEIGHT = 48;
@@ -38,6 +40,8 @@ function AddActivity(props) {
   const [description, setDescription] = useState("");
   const [address, setAddress] = useState("");
   const [mapsLink, setMapsLink] = useState("");
+
+  const spaces = ["indoor", "outdoor"];
 
   const neighborhoods = [
     "Mitte",
@@ -96,8 +100,8 @@ function AddActivity(props) {
   };
 
   return (
-    <div className="Activity Details">
-      <h3>Add Activity</h3>
+    <div className="container-all">
+      <h1>Add a new activity</h1>
 
       <form onSubmit={handleSubmit}>
         <Grid
@@ -136,14 +140,6 @@ function AddActivity(props) {
             <SelectType value={type} setValue={setType} />
           </Grid>
 
-          {/* <label>Type:</label>
-          <input
-            type="text"
-            name="type"
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-          /> */}
-
           <Grid item xs={12} md={6}>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">
@@ -157,7 +153,7 @@ function AddActivity(props) {
                   setNeighborhood(e.target.value);
                 }}
                 input={<OutlinedInput label="Neighborhood" />}
-                // renderValue={(selected) => selected.join(", ")}
+                renderValue={(selected) => selected}
                 MenuProps={MenuProps}
               >
                 {neighborhoods.map((neighborhoodMap) => (
@@ -200,15 +196,7 @@ function AddActivity(props) {
             <SelectTime value={time} setValue={setTime} />
           </Grid>
 
-          {/* <label>Time:</label>
-          <input
-            type="text"
-            name="time"
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-          /> */}
-
-          <Grid item xs={12} md={6}>
+          {/* <Grid item xs={12} md={6}>
             <TextField
               fullWidth
               id="outlined-basic"
@@ -218,10 +206,52 @@ function AddActivity(props) {
               value={space}
               onChange={(e) => setSpace(e.target.value)}
             />
+          </Grid> */}
+
+          <Grid item xs={12} md={6}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">
+                Indoor/Outdoor
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={space}
+                onChange={(e) => {
+                  setSpace(e.target.value);
+                }}
+                input={<OutlinedInput label="Indoor/Outdoor" />}
+                renderValue={(selected) => selected}
+                MenuProps={MenuProps}
+              >
+                {spaces.map((spaceMap) => (
+                  <MenuItem key={spaceMap} value={spaceMap}>
+                    <Checkbox checked={space.indexOf(spaceMap) > -1} />
+                    <ListItemText primary={spaceMap} />
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </Grid>
         </Grid>
 
-        <input type="submit" value="Submit" />
+        <Grid
+          className="activity-buttons"
+          container
+          spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 4, sm: 8, md: 12 }}
+        >
+          <Grid item spacing={{ xs: 4, md: 4 }}>
+            <Button
+              type="submit"
+              variant="contained"
+              startIcon={<SaveIcon />}
+              color="primary"
+            >
+              Save activity
+            </Button>
+          </Grid>
+        </Grid>
       </form>
     </div>
   );

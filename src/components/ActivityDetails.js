@@ -15,6 +15,7 @@ import {
   OutlinedInput,
   Select,
   TextField,
+  Checkbox,
 } from "@mui/material";
 import { SelectType } from "./SelectType";
 import { SelectTime } from "./SelectTime";
@@ -53,6 +54,8 @@ function ActivityDetails(props) {
   const [activity, setActivity] = useState(null);
 
   const navigate = useNavigate();
+
+  const spaces = ["indoor", "outdoor"];
 
   const neighborhoods = [
     "Mitte",
@@ -115,7 +118,7 @@ function ActivityDetails(props) {
     axios
       .put(`${API_URL}/api/activities/${activityId}`, requestBody)
       .then((response) => {
-        navigate(`/activitysearch`);
+        navigate(`/profile`);
       });
   };
 
@@ -246,7 +249,34 @@ function ActivityDetails(props) {
           <Grid item xs={6}>
             <SelectTime value={time} setValue={setTime} />
           </Grid>
-          <Grid item xs={6}>
+
+          <Grid item xs={12} md={6}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">
+                Indoor/Outdoor
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={space}
+                onChange={(e) => {
+                  setSpace(e.target.value);
+                }}
+                input={<OutlinedInput label="Indoor/Outdoor" />}
+                renderValue={(selected) => selected}
+                MenuProps={MenuProps}
+              >
+                {spaces.map((spaceMap) => (
+                  <MenuItem key={spaceMap} value={spaceMap}>
+                    <Checkbox checked={space.indexOf(spaceMap) > -1} />
+                    <ListItemText primary={spaceMap} />
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+
+          {/* <Grid item xs={6}>
             <TextField
               fullWidth
               id="outlined-basic"
@@ -256,7 +286,7 @@ function ActivityDetails(props) {
               defaultValue={space}
               onChange={(e) => setSpace(e.target.value)}
             />
-          </Grid>
+          </Grid> */}
         </Grid>
         <Grid
           className="activity-buttons"
