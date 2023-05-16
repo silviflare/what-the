@@ -59,7 +59,7 @@ h2 {
     0 0 6.5px -45px rgba(33, 35, 36, 0.16);
 }
 
-/* NAVBAR  ---------------------------------------------------------- */
+/* NAVBAR  ---------------------------------------------------------------------- */
 
 .navbar {
   position: fixed;
@@ -91,7 +91,7 @@ h2 {
   width: 40px;
 }
 
-/* HOMEPAGE  ---------------------------------------------------------- */
+/* HOMEPAGE  ---------------------------------------------------------------------- */
 
 .container-homepage {
   /* background-color: hsla(0, 0%, 100%, 1);
@@ -164,13 +164,30 @@ h2 {
   margin: 0;
 }
 
-/* FILTER PAGE  ---------------------------------------------------------- */
+/* FILTER PAGE  -------------------------------------------------------------------- */
 
 .activity-filter-list {
   padding-top: 30px;
 }
 
-/* LOGIN + SIGNIN  ---------------------------------------------------------- */
+/* ACTIVITY PAGES (CRUD)  ---------------------------------------------------------- */
+
+.activity-title-like {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 40px;
+}
+
+.activity-title-like-button {
+  align-self: center;
+}
+
+.activity-buttons {
+  justify-content: flex-end;
+  padding-top: 60px;
+}
+
+/* LOGIN + SIGNIN  ----------------------------------------------------------------- */
 
 /* .login-container,
 signin-content {
@@ -183,7 +200,7 @@ signin-content {
   min-height: 100vh;
 } */
 
-/* PROFILE PAGE ---------------------------------------------------------- */
+/* PROFILE PAGE -------------------------------------------------------------------- */
 
 .profile-infos-user {
   text-align: center;

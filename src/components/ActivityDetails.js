@@ -156,17 +156,16 @@ function ActivityDetails(props) {
 
   return (
     <div className="container-all">
-      <h1>
-        {activity.name}
-        <IconButton onClick={handleLike}>
+      <div className="activity-title-like">
+        <h1>{activity.name}</h1>
+        <IconButton className="activity-title-like-button" onClick={handleLike}>
           {liked ? (
             <FavoriteIcon color="error" />
           ) : (
             <FavoriteBorderIcon color="error" />
           )}
         </IconButton>
-      </h1>
-
+      </div>
       <form onSubmit={handleFormSubmit}>
         <Grid
           container
@@ -258,8 +257,14 @@ function ActivityDetails(props) {
               onChange={(e) => setSpace(e.target.value)}
             />
           </Grid>
-
-          <Grid item>
+        </Grid>
+        <Grid
+          className="activity-buttons"
+          container
+          spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 4, sm: 8, md: 12 }}
+        >
+          <Grid item spacing={{ xs: 4, md: 4 }}>
             <Button
               type="submit"
               variant="contained"
@@ -269,16 +274,18 @@ function ActivityDetails(props) {
               Save changes
             </Button>
           </Grid>
+
+          <Grid item>
+            <Button
+              variant="outlined"
+              startIcon={<DeleteIcon />}
+              onClick={deleteActivity}
+            >
+              Delete activity
+            </Button>
+          </Grid>
         </Grid>
       </form>
-
-      <Button
-        variant="outlined"
-        startIcon={<DeleteIcon />}
-        onClick={deleteActivity}
-      >
-        Delete activity
-      </Button>
     </div>
   );
 }
