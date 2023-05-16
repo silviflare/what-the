@@ -55,7 +55,7 @@ function RandomActivity() {
       <div className="randonizer-container-headline">
         {oneActivity && (
           <div className="randonizer-headline">
-            <Balancer>{oneActivity.description}</Balancer>
+            <Balancer ratio={0.6}>{oneActivity.description}</Balancer>
           </div>
         )}
       </div>

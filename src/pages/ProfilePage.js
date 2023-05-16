@@ -4,6 +4,7 @@ import { API_URL } from "../config/config";
 import AddActivity from "../components/AddActivity";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import ListItemLike from "../components/ListItemLike";
 
 // Styling Material UI
 import {
@@ -14,7 +15,10 @@ import {
   ListItemButton,
   ListItemText,
 } from "@mui/material";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
+
+// Profile Page funtion
 
 function ProfilePage(props) {
   const [favs, setFavs] = useState([]);
@@ -80,20 +84,11 @@ function ProfilePage(props) {
               <List>
                 {favs.map((fav) => {
                   return (
-                    <ListItem
+                    <ListItemLike
+                      activity={fav}
                       key={fav._id}
-                      secondaryAction={
-                        <IconButton edge="start" aria-label="fav">
-                          <FavoriteBorderIcon color="error" />
-                        </IconButton>
-                      }
-                      disablePadding
-                    >
-                      {/* <ListItemButton to={`/activities/${activity._id}`}> */}
-                      <ListItemButton>
-                        <ListItemText primary={fav.name} />
-                      </ListItemButton>
-                    </ListItem>
+                      onLikeToogle={getFavs}
+                    />
                   );
                 })}
               </List>
@@ -106,9 +101,19 @@ function ProfilePage(props) {
               <List>
                 {myActivities.map((activity) => {
                   return (
-                    <ListItemButton key={activity._id}>
-                      <ListItemText primary={activity.name} />
-                    </ListItemButton>
+                    <ListItem
+                      key={activity._id}
+                      secondaryAction={
+                        <IconButton edge="start" aria-label="edit">
+                          <ModeEditIcon />
+                        </IconButton>
+                      }
+                      disablePadding
+                    >
+                      <ListItemButton to={`/activities/${activity._id}`}>
+                        <ListItemText primary={activity.name} />
+                      </ListItemButton>
+                    </ListItem>
                   );
                 })}
               </List>
@@ -116,11 +121,6 @@ function ProfilePage(props) {
           </div>
         </>
       )}
-
-      {/*       <Button variant="contained" onClick={() => setVisible(!visible)}>
-        Add activity
-      </Button>
-      {visible && <AddActivity onCreateSuccess={getMyActivities} />} */}
     </div>
   );
 }

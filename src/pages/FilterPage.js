@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { API_URL } from "../config/config";
+import ListItemLike from "../components/ListItemLike";
 
 // Styling Material UI
 /* import OutlinedInput from "@mui/material/OutlinedInput";
@@ -73,9 +74,11 @@ function ActivityFilterPage() {
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
+    const storedToken = localStorage.getItem("authToken");
     axios
       .get(`${API_URL}/api/filter`, {
         params: { type, time, space, neighborhood },
+        headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
         setActivities(response.data);
@@ -88,7 +91,7 @@ function ActivityFilterPage() {
       <h1>Activity Filter</h1>
       <Grid container spacing={2}>
         {/* select indoor/outdoor */}
-        <Grid item xs={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">
               Indoor/Outdoor
@@ -115,17 +118,17 @@ function ActivityFilterPage() {
         </Grid>
 
         {/* select type activity */}
-        <Grid item xs={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <SelectType value={type} withAll setValue={setType} />
         </Grid>
 
         {/* select time activity */}
-        <Grid item xs={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <SelectTime value={time} withAll setValue={setTime} />
         </Grid>
 
         {/* select time neighborhood */}
-        <Grid item xs={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <FormControl fullWidth>
             <InputLabel id="demo-multiple-checkbox-label">
               Neighborhood
@@ -157,28 +160,13 @@ function ActivityFilterPage() {
 
       {/* Show filtered activities */}
 
-      <List>
-        {activities.map((activity, index) => {
-          return (
-            <ListItem
-              key={index}
-              secondaryAction={
-                <IconButton edge="start" aria-label="fav">
-                  <FavoriteBorderIcon color="error" />
-                </IconButton>
-              }
-              disablePadding
-            >
-              <ListItemButton to={`/activities/${activity._id}`}>
-                <ListItemText
-                  primary={activity.description}
-                  secondary={activity.name}
-                />
-              </ListItemButton>
-            </ListItem>
-          );
-        })}
-      </List>
+      <div className="activity-filter-list">
+        <List>
+          {activities.map((activity, index) => {
+            return <ListItemLike activity={activity} key={index} />;
+          })}
+        </List>
+      </div>
     </div>
   );
 }

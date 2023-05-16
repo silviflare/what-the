@@ -41,14 +41,14 @@ export const theme = createTheme({
         },
       },
     },
-    MuiList: {
+    /*     MuiList: {
       styleOverrides: {
         root: {
           paddingTop: 40,
         },
       },
-    },
-    MuiListItem: {
+    }, */
+    MuiListItemButton: {
       styleOverrides: {
         root: {
           background: "#fafafa",
