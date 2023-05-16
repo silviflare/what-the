@@ -1,19 +1,33 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config/config";
 
-// Styling
-import OutlinedInput from "@mui/material/OutlinedInput";
+// Styling Material UI
+/* import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
-import Checkbox from "@mui/material/Checkbox";
-import { Grid } from "@mui/material";
+import Checkbox from "@mui/material/Checkbox"; */
+import {
+  OutlinedInput,
+  MenuItem,
+  InputLabel,
+  FormControl,
+  ListItemText,
+  Select,
+  Checkbox,
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+} from "@mui/material";
 import { SelectType } from "../components/SelectType";
 import { SelectTime } from "../components/SelectTime";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+// import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -142,16 +156,29 @@ function ActivityFilterPage() {
       </Grid>
 
       {/* Show filtered activities */}
-      <h2>Activities</h2>
-      {activities.map((activity, index) => {
-        return (
-          <div key={index}>
-            <Link to={`/activities/${activity._id}`}>
-              <p>{activity.name}</p>
-            </Link>
-          </div>
-        );
-      })}
+
+      <List>
+        {activities.map((activity, index) => {
+          return (
+            <ListItem
+              key={index}
+              secondaryAction={
+                <IconButton edge="start" aria-label="fav">
+                  <FavoriteBorderIcon color="error" />
+                </IconButton>
+              }
+              disablePadding
+            >
+              <ListItemButton to={`/activities/${activity._id}`}>
+                <ListItemText
+                  primary={activity.description}
+                  secondary={activity.name}
+                />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
+      </List>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { AuthContext } from "../context/auth.context";
 
 // Material UI
 import { Button } from "@mui/material";
+import Person2Icon from "@mui/icons-material/Person2";
 
 function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
@@ -13,7 +14,8 @@ function Navbar() {
       <div className="nav-container">
         <div className="logo-container">
           <Link className="logo-navbar" to="/">
-            *
+            {/* <img src="./what-the-3.png" alt="what-the-logo" /> */}
+            <img src="../what-the-3.svg" alt="what-the-logo" />
           </Link>
         </div>
 
@@ -26,15 +28,15 @@ function Navbar() {
             </Link>
 
             <Link to={`/profile`}>
-              <Button type="submit" variant="contained" color="primary">
-                Hello &nbsp; <span> {user && user.name}</span>!
+              <Button type="submit" variant="outlined" color="primary">
+                <Person2Icon />
+                &nbsp; <span> {user && user.name}</span>
               </Button>
-              {/* <span> Hello {user && user.name}!</span> */}
             </Link>
 
-            <Button variant="outlined" onClick={logOutUser}>
+            {/* <Button variant="outlined" onClick={logOutUser}>
               Logout
-            </Button>
+            </Button> */}
           </div>
         )}
 

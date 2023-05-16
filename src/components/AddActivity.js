@@ -110,9 +110,10 @@ function AddActivity(props) {
             <TextField
               fullWidth
               id="outlined-basic"
-              label="Name activity"
+              label="Name activity/place"
               variant="outlined"
               name="Name activity"
+              // helperText="Some important text"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -127,7 +128,7 @@ function AddActivity(props) {
               name="Description activity"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              helperText="Some important text"
+              helperText="Maximum 10 words."
             />
           </Grid>
 

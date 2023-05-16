@@ -2,6 +2,17 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import authService from "./../services/auth.service";
 
+// Material UI
+import {
+  Box,
+  Button,
+  Checkbox,
+  Container,
+  FormControlLabel,
+  Grid,
+  TextField,
+} from "@mui/material";
+
 function SignupPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,31 +45,71 @@ function SignupPage(props) {
   };
 
   return (
-    <div className="SignupPage">
-      <h1>Sign Up</h1>
+    <div className="container-center">
+      <div className="container-small">
+        <Container maxWidth="sm">
+          <div className="signin-content">
+            <h1>Sign Up</h1>
+            <form onSubmit={handleSignupSubmit}>
+              <Grid container direction="column" spacing={2}>
+                <Grid item>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Email"
+                    variant="outlined"
+                    name="Email"
+                    value={email}
+                    onChange={handleEmail}
+                  />
+                </Grid>
+                <Grid item>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Password"
+                    variant="outlined"
+                    type="password"
+                    name="Password"
+                    // helperText="Some important text"
+                    value={password}
+                    onChange={handlePassword}
+                  />
+                </Grid>
+                <Grid item>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Name"
+                    variant="outlined"
+                    type="name"
+                    name="name"
+                    value={name}
+                    onChange={handleName}
+                  />
+                </Grid>
+                <Grid item>
+                  <FormControlLabel
+                    required
+                    control={<Checkbox />}
+                    label="By signing up, you agree to the Terms of Service and Privacy Policy."
+                  />
+                </Grid>
+                <Grid item>
+                  <Button type="submit" variant="contained" color="primary">
+                    Sign Up
+                  </Button>
+                </Grid>
+              </Grid>
+            </form>
 
-      <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
-
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
-
-        <button type="submit">Sign Up</button>
-      </form>
-
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            <Box mt={4} mb={4}>
+              Already have account? <Link to={"/login"}> Login</Link>
+            </Box>
+          </div>
+        </Container>
+      </div>
     </div>
   );
 }

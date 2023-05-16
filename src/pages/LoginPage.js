@@ -3,6 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import authService from "./../services/auth.service";
 
+// Material UI
+import { Box, Button, Container, Grid, TextField } from "@mui/material";
+
 function LoginPage(props) {
   const [email, setEmail] = useState("silvia@gmail.com"); // TODO: delete !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   const [password, setPassword] = useState("Asdf_1234"); // TODO: delete !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -37,33 +40,49 @@ function LoginPage(props) {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-content">
-        <h1>Login</h1>
-
-        <form onSubmit={handleLoginSubmit}>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleEmail}
-          />
-
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handlePassword}
-          />
-
-          <button type="submit">Login</button>
-        </form>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-        <p>Don't have an account yet?</p>
-        <Link to={"/signup"}> Sign Up</Link>
+    <div className="container-center">
+      <div className="container-small">
+        <Container maxWidth="sm">
+          <div className="login-content">
+            <h1>Login</h1>
+            <form onSubmit={handleLoginSubmit}>
+              <Grid container direction="column" spacing={2}>
+                <Grid item>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Email"
+                    variant="outlined"
+                    name="Email"
+                    value={email}
+                    onChange={handleEmail}
+                  />
+                </Grid>
+                <Grid item>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Password"
+                    variant="outlined"
+                    type="password"
+                    name="Password"
+                    value={password}
+                    onChange={handlePassword}
+                  />
+                </Grid>
+                <Grid item>
+                  <Button type="submit" variant="contained" color="primary">
+                    Log in
+                  </Button>
+                </Grid>
+              </Grid>
+            </form>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            <Box mt={4} mb={4}>
+              Don't have an account yet? <Link to={"/signup"}> Sign Up</Link>
+            </Box>
+          </div>
+        </Container>
       </div>
     </div>
   );

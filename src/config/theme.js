@@ -4,10 +4,10 @@ export const theme = createTheme({
   palette: {
     type: "light",
     primary: {
-      main: "#ff9100",
+      main: "#7087f7",
     },
     secondary: {
-      main: "#f50057",
+      main: "#FFA552",
     },
   },
   components: {
@@ -15,10 +15,10 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 30,
-          paddingTop: 15,
-          paddingBottom: 15,
-          paddingLeft: 40,
-          paddingRight: 40,
+          paddingTop: 10,
+          paddingBottom: 10,
+          paddingLeft: 30,
+          paddingRight: 30,
         },
       },
     },
@@ -26,7 +26,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 30,
-          paddingLeft: 24,
+          paddingLeft: 20,
         },
       },
     },
@@ -34,19 +34,26 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           legend: {
-            marginLeft: 20,
+            marginLeft: 18,
           },
           borderRadius: 30,
           paddingLeft: 18,
         },
       },
     },
-    /* MuiMenu: {
+    MuiList: {
       styleOverrides: {
         root: {
-          left: -18,
+          paddingTop: 40,
         },
       },
-    }, */
+    },
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          background: "#fafafa",
+        },
+      },
+    },
   },
 });

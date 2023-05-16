@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 import axios from "axios";
 import { API_URL } from "../config/config";
+import Balancer from "react-wrap-balancer";
 
 // Material UI
 import { Collapse, IconButton } from "@mui/material";
@@ -37,19 +38,25 @@ function RandomActivity() {
   return (
     <div className="randonizer-container">
       <button className="randonizer-button" onClick={getRandomActivity}>
-        <h1>What the f*** should I do today?</h1>
+        <p>What the f*** should I do today?</p>
       </button>
-
-      <IconButton onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-      </IconButton>
+      <div cclassName="randonizer-open-collapse">
+        <IconButton
+          className="randonizer-open-collapse"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+        </IconButton>
+      </div>
       <Collapse in={isOpen}>
         <Filters onChange={onFilterChange} />
       </Collapse>
 
       <div className="randonizer-container-headline">
         {oneActivity && (
-          <h2 className="randonizer-headline">{oneActivity.description}</h2>
+          <div className="randonizer-headline">
+            <Balancer>{oneActivity.description}</Balancer>
+          </div>
         )}
       </div>
     </div>

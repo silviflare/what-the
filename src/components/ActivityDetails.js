@@ -7,7 +7,6 @@ import { API_URL } from "../config/config";
 import {
   Button,
   IconButton,
-  Checkbox,
   FormControl,
   Grid,
   InputLabel,
@@ -49,9 +48,10 @@ function ActivityDetails(props) {
   const [mapsLink, setMapsLink] = useState("");
 
   const [liked, setLiked] = useState(false);
+  const { activityId } = useParams();
 
   const [activity, setActivity] = useState(null);
-  const { activityId } = useParams();
+
   const navigate = useNavigate();
 
   const neighborhoods = [
@@ -149,23 +149,23 @@ function ActivityDetails(props) {
   if (!activity) {
     return (
       <div>
-        <h1>No hay activities</h1>
+        <h1>There are not activities</h1>
       </div>
     );
   }
 
   return (
-    <div className="Activity Details">
-      <h3>Activity Details</h3>
-      <h3>{activity.name}</h3>
-
-      <IconButton onClick={handleLike}>
-        {liked ? (
-          <FavoriteBorderIcon color="error" />
-        ) : (
-          <FavoriteIcon color="error" />
-        )}
-      </IconButton>
+    <div className="container-all">
+      <h1>
+        {activity.name}
+        <IconButton onClick={handleLike}>
+          {liked ? (
+            <FavoriteIcon color="error" />
+          ) : (
+            <FavoriteBorderIcon color="error" />
+          )}
+        </IconButton>
+      </h1>
 
       <form onSubmit={handleFormSubmit}>
         <Grid
@@ -199,34 +199,6 @@ function ActivityDetails(props) {
             <SelectType value={type} setValue={setType} />
           </Grid>
           <Grid item xs={6}>
-            {/*  <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">
-                Neighborhood
-              </InputLabel>
-
-               <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={neighborhood}
-                defaultValue={neighborhood}
-                label="Neighborhood"
-                onChange={(e) => {
-                  setSpace(e.target.value);
-                }}
-              >
-                {neighborhoods.map((neighborhoodMap) => {
-                  return (
-                    <MenuItem
-                      key={neighborhoodMap}
-                      value={neighborhoodMap.toLowerCase()}
-                    >
-                      {neighborhoodMap || "All"}
-                    </MenuItem>
-                  );
-                })}
-              </Select>
-            </FormControl> */}
-
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">
                 Neighborhood
@@ -249,16 +221,6 @@ function ActivityDetails(props) {
                 ))}
               </Select>
             </FormControl>
-
-            {/* <TextField
-              fullWidth
-              id="outlined-basic"
-              label="Neighborhood"
-              variant="outlined"
-              name="neighborhood"
-              defaultValue={neighborhood}
-              onChange={(e) => setNeighborhood(e.target.value)}
-            /> */}
           </Grid>
           <Grid item xs={6}>
             <TextField
@@ -296,16 +258,18 @@ function ActivityDetails(props) {
               onChange={(e) => setSpace(e.target.value)}
             />
           </Grid>
-        </Grid>
 
-        <Button
-          type="submit"
-          variant="contained"
-          startIcon={<SaveIcon />}
-          color="primary"
-        >
-          Update activity
-        </Button>
+          <Grid item>
+            <Button
+              type="submit"
+              variant="contained"
+              startIcon={<SaveIcon />}
+              color="primary"
+            >
+              Save changes
+            </Button>
+          </Grid>
+        </Grid>
       </form>
 
       <Button

@@ -10,7 +10,6 @@ import ActivityFilterPage from "./pages/FilterPage";
 import ActivityDetails from "./components/ActivityDetails";
 import AddActivity from "./components/AddActivity";
 import ProfilePage from "./pages/ProfilePage";
-import { Container } from "@mui/material";
 
 function App() {
   return (
