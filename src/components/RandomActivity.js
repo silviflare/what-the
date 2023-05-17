@@ -23,7 +23,9 @@ function RandomActivity() {
 
   const getRandomActivity = () => {
     axios
-      .get(`${API_URL}/api/random-activity`, { params: filters })
+      .get(`${process.env.REACT_APP_API_URL}/api/random-activity`, {
+        params: filters,
+      })
       .then((response) => {
         const oneActivity = response.data;
         setActivity(oneActivity);
