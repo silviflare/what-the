@@ -226,7 +226,7 @@ function AddActivity(props) {
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          <Grid item spacing={{ xs: 4, md: 4 }}>
+          <Grid item>
             <Button
               type="submit"
               variant="contained"

@@ -45,7 +45,7 @@ function RandomActivity() {
       <button className="randonizer-button" onClick={getRandomActivity}>
         <p>What the f✺✼✹✤ should I do today?</p>
       </button>
-      <div cclassName="randonizer-open-collapse">
+      <div className="randonizer-open-collapse">
         <IconButton
           className="randonizer-open-collapse"
           onClick={() => setIsOpen(!isOpen)}
