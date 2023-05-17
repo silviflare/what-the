@@ -90,9 +90,17 @@ function SignupPage(props) {
                 </Grid>
                 <Grid item>
                   <FormControlLabel
-                    required
+                    required={true}
                     control={<Checkbox />}
-                    label="By signing up, you agree to the Terms of Service and Privacy Policy."
+                    label={
+                      <div>
+                        <span>By signing up, you agree to the</span>
+                        <Link to={"/termsconditions"}>
+                          Terms of Service and Privacy Policy
+                        </Link>
+                        <span>.</span>
+                      </div>
+                    }
                   />
                 </Grid>
                 <Grid item>

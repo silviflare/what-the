@@ -7,9 +7,12 @@ import LoginPage from "./pages/LoginPage";
 import IsAnonym from "./components/IsAnonym";
 import IsPrivate from "./components/IsPrivate";
 import ActivityFilterPage from "./pages/FilterPage";
-import ActivityDetails from "./components/ActivityDetails";
+import ActivityDetailsEdit from "./components/ActivityDetailsEdit";
 import AddActivity from "./components/AddActivity";
 import ProfilePage from "./pages/ProfilePage";
+import ActivityDetails from "./components/ActivityDetails";
+import TermsPrivacyPage from "./pages/TermsPrivacyPage";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   return (
@@ -25,6 +28,16 @@ function App() {
           element={
             <IsPrivate>
               <ActivityFilterPage />
+            </IsPrivate>
+          }
+        />
+
+        <Route
+          exact
+          path="/activities/edit/:activityId"
+          element={
+            <IsPrivate>
+              <ActivityDetailsEdit />
             </IsPrivate>
           }
         />
@@ -73,6 +86,24 @@ function App() {
           element={
             <IsAnonym>
               <LoginPage />
+            </IsAnonym>
+          }
+        />
+
+        <Route
+          path="/termsconditions"
+          element={
+            <IsAnonym>
+              <TermsPrivacyPage />
+            </IsAnonym>
+          }
+        />
+
+        <Route
+          path="/contact"
+          element={
+            <IsAnonym>
+              <ContactPage />
             </IsAnonym>
           }
         />

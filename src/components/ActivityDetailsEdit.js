@@ -1,10 +1,11 @@
-import { useState, useEffect, useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config/config";
 
 // Material UI
 import {
+  Button,
   IconButton,
   FormControl,
   Grid,
@@ -18,10 +19,10 @@ import {
 } from "@mui/material";
 import { SelectType } from "./SelectType";
 import { SelectTime } from "./SelectTime";
+import DeleteIcon from "@mui/icons-material/Delete";
 import SaveIcon from "@mui/icons-material/Save";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { AuthContext } from "../context/auth.context";
 
 // Settings Material UI
 const ITEM_HEIGHT = 48;
@@ -37,7 +38,7 @@ const MenuProps = {
 
 // ActivityDetails funtion
 
-function ActivityDetails(props) {
+function ActivityDetailsEdit(props) {
   const [type, setType] = useState([]);
   const [time, setTime] = useState([]);
   const [space, setSpace] = useState("");
@@ -51,9 +52,6 @@ function ActivityDetails(props) {
   const { activityId } = useParams();
 
   const [activity, setActivity] = useState(null);
-
-  const { user } = useContext(AuthContext);
-  const isFromUser = user?._id === activity?.createdBy;
 
   const navigate = useNavigate();
 
@@ -102,6 +100,38 @@ function ActivityDetails(props) {
       .catch((error) => console.log(error));
   }, [activityId]);
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    const requestBody = {
+      type,
+      time,
+      space,
+      neighborhood,
+      name,
+      description,
+      address,
+      mapsLink,
+    };
+
+    // PUT request to update the project
+    axios
+      .put(`${API_URL}/api/activities/${activityId}`, requestBody)
+      .then((response) => {
+        navigate(`/profile`);
+      });
+  };
+
+  const deleteActivity = () => {
+    // Make a DELETE request to delete the project
+    axios
+      .delete(`${API_URL}/api/activities/${activityId}`)
+      .then(() => {
+        navigate(`/activitysearch`);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const handleLike = () => {
     // Perform the "like" action
     const storedToken = localStorage.getItem("authToken");
@@ -131,15 +161,6 @@ function ActivityDetails(props) {
     <div className="container-all">
       <div className="activity-title-like">
         <h1>{activity.name}</h1>
-        {isFromUser && (
-          <IconButton
-            className="activity-title-like-button"
-            onClick={() => navigate(`/activities/edit/${activity._id}`)}
-          >
-            <SaveIcon />
-          </IconButton>
-        )}
-
         <IconButton className="activity-title-like-button" onClick={handleLike}>
           {liked ? (
             <FavoriteIcon color="error" />
@@ -148,7 +169,7 @@ function ActivityDetails(props) {
           )}
         </IconButton>
       </div>
-      <form>
+      <form onSubmit={handleFormSubmit}>
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}
@@ -157,27 +178,27 @@ function ActivityDetails(props) {
           <Grid item xs={3}>
             <TextField
               fullWidth
-              disabled
               id="outlined-basic"
               label="Name activity"
               variant="outlined"
               name="Name activity"
               defaultValue={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </Grid>
           <Grid item xs={9}>
             <TextField
               fullWidth
-              disabled
               id="outlined-basic"
               label="Description activity"
               variant="outlined"
               name="Description activity"
               defaultValue={description}
+              onChange={(e) => setDescription(e.target.value)}
             />
           </Grid>
           <Grid item xs={6}>
-            <SelectType value={type} setValue={setType} disabled />
+            <SelectType value={type} setValue={setType} />
           </Grid>
           <Grid item xs={6}>
             <FormControl fullWidth>
@@ -185,10 +206,12 @@ function ActivityDetails(props) {
                 Neighborhood
               </InputLabel>
               <Select
-                disabled
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={neighborhood}
+                onChange={(e) => {
+                  setNeighborhood(e.target.value);
+                }}
                 input={<OutlinedInput label="Neighborhood" />}
                 renderValue={(selected) => selected}
                 MenuProps={MenuProps}
@@ -203,28 +226,28 @@ function ActivityDetails(props) {
           </Grid>
           <Grid item xs={6}>
             <TextField
-              disabled
               fullWidth
               id="outlined-basic"
               label="Address"
               variant="outlined"
               name="address"
               defaultValue={address}
+              onChange={(e) => setAddress(e.target.value)}
             />
           </Grid>
           <Grid item xs={6}>
             <TextField
               fullWidth
-              disabled
               id="outlined-basic"
               label="Link to Google Maps"
               variant="outlined"
               name="mapsLink"
               defaultValue={mapsLink}
+              onChange={(e) => setMapsLink(e.target.value)}
             />
           </Grid>
           <Grid item xs={6}>
-            <SelectTime value={time} setValue={setTime} disabled />
+            <SelectTime value={time} setValue={setTime} />
           </Grid>
 
           <Grid item xs={12} md={6}>
@@ -233,10 +256,12 @@ function ActivityDetails(props) {
                 Indoor/Outdoor
               </InputLabel>
               <Select
-                disabled
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={space}
+                onChange={(e) => {
+                  setSpace(e.target.value);
+                }}
                 input={<OutlinedInput label="Indoor/Outdoor" />}
                 renderValue={(selected) => selected}
                 MenuProps={MenuProps}
@@ -250,10 +275,49 @@ function ActivityDetails(props) {
               </Select>
             </FormControl>
           </Grid>
+
+          {/* <Grid item xs={6}>
+            <TextField
+              fullWidth
+              id="outlined-basic"
+              label="Indoor/Outdoor"
+              variant="outlined"
+              name="space"
+              defaultValue={space}
+              onChange={(e) => setSpace(e.target.value)}
+            />
+          </Grid> */}
+        </Grid>
+        <Grid
+          className="activity-buttons"
+          container
+          spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 4, sm: 8, md: 12 }}
+        >
+          <Grid item spacing={{ xs: 4, md: 4 }}>
+            <Button
+              type="submit"
+              variant="contained"
+              startIcon={<SaveIcon />}
+              color="primary"
+            >
+              Save changes
+            </Button>
+          </Grid>
+
+          <Grid item>
+            <Button
+              variant="outlined"
+              startIcon={<DeleteIcon />}
+              onClick={deleteActivity}
+            >
+              Delete activity
+            </Button>
+          </Grid>
         </Grid>
       </form>
     </div>
   );
 }
 
-export default ActivityDetails;
+export default ActivityDetailsEdit;

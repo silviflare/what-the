@@ -28,6 +28,7 @@ export const SelectTime = (props) => {
     <FormControl fullWidth>
       <InputLabel id="demo-multiple-checkbox-label">Time of the day</InputLabel>
       <Select
+        disabled={props.disabled}
         labelId="demo-multiple-checkbox-label"
         id="demo-multiple-checkbox"
         multiple

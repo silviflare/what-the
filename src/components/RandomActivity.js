@@ -15,6 +15,7 @@ function RandomActivity() {
   const [oneActivity, setActivity] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [filters, setFilters] = useState({});
+  const [isOpenActivity, setIsOpenActivity] = useState(false);
 
   const onFilterChange = useCallback((filterValues) => {
     console.log("Filter valuessssssssssssss", filterValues);
@@ -27,6 +28,7 @@ function RandomActivity() {
       .then((response) => {
         const oneActivity = response.data;
         setActivity(oneActivity);
+        setIsOpenActivity(true);
       })
       .catch((err) => console.log(err));
   };
@@ -54,23 +56,25 @@ function RandomActivity() {
         <Filters onChange={onFilterChange} />
       </Collapse>
 
-      <div className="randonizer-container-headline">
-        {oneActivity && (
-          <div className="randonizer-headline">
-            <Balancer ratio={0.6}>
-              {oneActivity.description}
+      <Collapse in={isOpenActivity}>
+        <div className="randonizer-container-headline">
+          {oneActivity && (
+            <div className="randonizer-headline">
+              <Balancer ratio={0.6}>
+                {oneActivity.description}
 
-              <Link
-                to={oneActivity.mapsLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                ↗
-              </Link>
-            </Balancer>
-          </div>
-        )}
-      </div>
+                <Link
+                  to={oneActivity.mapsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ↗
+                </Link>
+              </Balancer>
+            </div>
+          )}
+        </div>
+      </Collapse>
     </div>
   );
 }

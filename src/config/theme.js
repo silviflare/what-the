@@ -41,13 +41,13 @@ export const theme = createTheme({
         },
       },
     },
-    /*     MuiList: {
+    MuiListItem: {
       styleOverrides: {
         root: {
-          paddingTop: 40,
+          marginBottom: 4,
         },
       },
-    }, */
+    },
     MuiListItemButton: {
       styleOverrides: {
         root: {

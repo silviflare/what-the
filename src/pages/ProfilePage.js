@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { API_URL } from "../config/config";
-import AddActivity from "../components/AddActivity";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import ListItemLike from "../components/ListItemLike";
@@ -17,15 +16,16 @@ import {
 } from "@mui/material";
 
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Profile Page funtion
 
 function ProfilePage(props) {
   const [favs, setFavs] = useState([]);
   const [myActivities, setMyActivities] = useState([]);
-  const [visible, setVisible] = useState(false);
   const { user, logOutUser } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const getFavs = () => {
     const storedToken = localStorage.getItem("authToken");
@@ -65,21 +65,27 @@ function ProfilePage(props) {
       {user && (
         <>
           <div className="profile-infos-user">
-            <h1>Hello {user.name} !</h1>
-            <p>Your email is: {user.email}</p>
-
-            <Link to="/activities">
-              <Button variant="contained">Add activity</Button>
-            </Link>
+            <div>
+              <h1>Hello {user.name} !</h1>
+              <p>Your email is: {user.email}</p>
+            </div>
 
             {/* <Button variant="contained" onClick={() => setVisible(!visible)}>
               Add activity
             </Button>
             {visible && <AddActivity onCreateSuccess={getMyActivities} />} */}
 
-            <Button variant="outlined" onClick={logOutUser}>
-              Logout
-            </Button>
+            <div>
+              <Link to="/activities">
+                <Button size="small" variant="contained">
+                  Add activity
+                </Button>
+              </Link>
+
+              <Button size="small" variant="outlined" onClick={logOutUser}>
+                Logout
+              </Button>
+            </div>
           </div>
 
           <div className="profile-container-lists">
@@ -101,7 +107,7 @@ function ProfilePage(props) {
 
             {/* Map over the activities the user made */}
             <div className="one-list-profile">
-              <h2>My activities</h2>
+              <h2>My created activities</h2>
 
               <List>
                 {myActivities.map((activity) => {
@@ -109,7 +115,13 @@ function ProfilePage(props) {
                     <ListItem
                       key={activity._id}
                       secondaryAction={
-                        <IconButton edge="start" aria-label="edit">
+                        <IconButton
+                          onClick={() =>
+                            navigate(`/activities/edit/${activity._id}`)
+                          }
+                          edge="start"
+                          aria-label="edit"
+                        >
                           <ModeEditIcon />
                         </IconButton>
                       }

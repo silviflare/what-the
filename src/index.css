@@ -204,15 +204,40 @@ signin-content {
 
 .profile-infos-user {
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
+.profile-infos-user button {
+  margin-left: 20px;
 }
 
 .profile-container-lists {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  gap: 40px;
 }
 
 .one-list-profile {
   width: 100%;
-  margin: 20px;
+}
+
+/* TERMS & CONDITIONS -------------------------------------------------------------------- */
+
+.terms-conditions h1 {
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.terms-conditions p {
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+}
+
+.what-the {
+  color: #7087f7;
+  font-style: italic;
 }
