@@ -18,7 +18,7 @@ import {
 } from "@mui/material";
 import { SelectType } from "./SelectType";
 import { SelectTime } from "./SelectTime";
-import SaveIcon from "@mui/icons-material/Save";
+import EditIcon from "@mui/icons-material/Edit";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { AuthContext } from "../context/auth.context";
@@ -129,32 +129,33 @@ function ActivityDetails(props) {
 
   return (
     <div className="container-all">
-      <div className="activity-title-like">
+      <div className="crud-title crud-title-like">
         <h1>{activity.name}</h1>
-        {isFromUser && (
+        <div>
+          {isFromUser && (
+            <IconButton
+              className="activity-title-like-button"
+              onClick={() => navigate(`/activities/edit/${activity._id}`)}
+            >
+              <EditIcon />
+            </IconButton>
+          )}
+
           <IconButton
             className="activity-title-like-button"
-            onClick={() => navigate(`/activities/edit/${activity._id}`)}
+            onClick={handleLike}
           >
-            <SaveIcon />
+            {liked ? (
+              <FavoriteIcon color="error" />
+            ) : (
+              <FavoriteBorderIcon color="error" />
+            )}
           </IconButton>
-        )}
-
-        <IconButton className="activity-title-like-button" onClick={handleLike}>
-          {liked ? (
-            <FavoriteIcon color="error" />
-          ) : (
-            <FavoriteBorderIcon color="error" />
-          )}
-        </IconButton>
+        </div>
       </div>
       <form>
-        <Grid
-          container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
-        >
-          <Grid item xs={3}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={3}>
             <TextField
               fullWidth
               disabled
@@ -165,7 +166,7 @@ function ActivityDetails(props) {
               defaultValue={name}
             />
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={12} md={9}>
             <TextField
               fullWidth
               disabled
@@ -176,10 +177,10 @@ function ActivityDetails(props) {
               defaultValue={description}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <SelectType value={type} setValue={setType} disabled />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">
                 Neighborhood
@@ -201,7 +202,7 @@ function ActivityDetails(props) {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <TextField
               disabled
               fullWidth
@@ -212,7 +213,7 @@ function ActivityDetails(props) {
               defaultValue={address}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <TextField
               fullWidth
               disabled
@@ -223,7 +224,7 @@ function ActivityDetails(props) {
               defaultValue={mapsLink}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <SelectTime value={time} setValue={setTime} disabled />
           </Grid>
 

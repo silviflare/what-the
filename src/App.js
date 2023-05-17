@@ -12,7 +12,7 @@ import AddActivity from "./components/AddActivity";
 import ProfilePage from "./pages/ProfilePage";
 import ActivityDetails from "./components/ActivityDetails";
 import TermsPrivacyPage from "./pages/TermsPrivacyPage";
-import ContactPage from "./pages/ContactPage";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
   return (
@@ -100,10 +100,10 @@ function App() {
         />
 
         <Route
-          path="/contact"
+          path="/about"
           element={
             <IsAnonym>
-              <ContactPage />
+              <AboutPage />
             </IsAnonym>
           }
         />

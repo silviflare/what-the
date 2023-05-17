@@ -101,15 +101,12 @@ function AddActivity(props) {
 
   return (
     <div className="container-all">
-      <h1>Add a new activity</h1>
+      <div className="crud-title">
+        <h1>Add a new activity</h1>
+      </div>
 
       <form onSubmit={handleSubmit}>
-        <Grid
-          container
-          spacing={2}
-          // spacing={{ xs: 2, md: 3 }}
-          // columns={{ xs: 4, sm: 8, md: 12 }}
-        >
+        <Grid container spacing={2}>
           <Grid item xs={12} md={3}>
             <TextField
               fullWidth
@@ -195,18 +192,6 @@ function AddActivity(props) {
           <Grid item xs={12} md={6}>
             <SelectTime value={time} setValue={setTime} />
           </Grid>
-
-          {/* <Grid item xs={12} md={6}>
-            <TextField
-              fullWidth
-              id="outlined-basic"
-              label="Indoor/Outdoor"
-              variant="outlined"
-              name="space"
-              value={space}
-              onChange={(e) => setSpace(e.target.value)}
-            />
-          </Grid> */}
 
           <Grid item xs={12} md={6}>
             <FormControl fullWidth>

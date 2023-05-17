@@ -8,6 +8,7 @@ import ListItemLike from "../components/ListItemLike";
 // Styling Material UI
 import {
   Button,
+  Grid,
   IconButton,
   List,
   ListItem,
@@ -70,11 +71,6 @@ function ProfilePage(props) {
               <p>Your email is: {user.email}</p>
             </div>
 
-            {/* <Button variant="contained" onClick={() => setVisible(!visible)}>
-              Add activity
-            </Button>
-            {visible && <AddActivity onCreateSuccess={getMyActivities} />} */}
-
             <div>
               <Link to="/activities">
                 <Button size="small" variant="contained">
@@ -88,54 +84,59 @@ function ProfilePage(props) {
             </div>
           </div>
 
-          <div className="profile-container-lists">
-            {/* Map over my favs */}
-            <div className="one-list-profile">
-              <h2>My favs</h2>
-              <List>
-                {favs.map((fav) => {
-                  return (
-                    <ListItemLike
-                      activity={fav}
-                      key={fav._id}
-                      onLikeToogle={getFavs}
-                    />
-                  );
-                })}
-              </List>
-            </div>
-
+          <Grid container spacing={{ xs: 2, md: 3 }}>
+            {/* <div className="profile-container-lists"> */}
+            <Grid item xs={12} md={6}>
+              {/* Map over my favs */}
+              <div className="one-list-profile">
+                <h2>My favs</h2>
+                <List>
+                  {favs.map((fav) => {
+                    return (
+                      <ListItemLike
+                        activity={fav}
+                        key={fav._id}
+                        onLikeToogle={getFavs}
+                      />
+                    );
+                  })}
+                </List>
+              </div>
+            </Grid>
             {/* Map over the activities the user made */}
-            <div className="one-list-profile">
-              <h2>My created activities</h2>
+            <Grid item xs={12} md={6}>
+              <div className="one-list-profile">
+                <h2>My created activities</h2>
 
-              <List>
-                {myActivities.map((activity) => {
-                  return (
-                    <ListItem
-                      key={activity._id}
-                      secondaryAction={
-                        <IconButton
-                          onClick={() =>
-                            navigate(`/activities/edit/${activity._id}`)
-                          }
-                          edge="start"
-                          aria-label="edit"
-                        >
-                          <ModeEditIcon />
-                        </IconButton>
-                      }
-                      disablePadding
-                    >
-                      <ListItemButton to={`/activities/${activity._id}`}>
-                        <ListItemText primary={activity.name} />
-                      </ListItemButton>
-                    </ListItem>
-                  );
-                })}
-              </List>
-            </div>
-          </div>
+                <List>
+                  {myActivities.map((activity) => {
+                    return (
+                      <ListItem
+                        key={activity._id}
+                        secondaryAction={
+                          <IconButton
+                            onClick={() =>
+                              navigate(`/activities/edit/${activity._id}`)
+                            }
+                            edge="start"
+                            aria-label="edit"
+                          >
+                            <ModeEditIcon />
+                          </IconButton>
+                        }
+                        disablePadding
+                      >
+                        <ListItemButton to={`/activities/${activity._id}`}>
+                          <ListItemText primary={activity.name} />
+                        </ListItemButton>
+                      </ListItem>
+                    );
+                  })}
+                </List>
+              </div>
+            </Grid>
+            {/* </div> */}
+          </Grid>
         </>
       )}
     </div>

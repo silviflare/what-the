@@ -138,7 +138,7 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
+
   gap: 10px;
 }
 
@@ -151,6 +151,7 @@ h2 {
   align-items: center;
   justify-content: center;
   font-family: "Playfair Display", serif;
+  text-align: center;
   font-weight: 800;
   font-size: 3rem;
 }
@@ -172,10 +173,14 @@ h2 {
 
 /* ACTIVITY PAGES (CRUD)  ---------------------------------------------------------- */
 
-.activity-title-like {
+.crud-title {
+  padding-bottom: 30px;
+}
+
+.crud-title-like {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 40px;
+  align-items: center;
 }
 
 .activity-title-like-button {
@@ -203,23 +208,25 @@ signin-content {
 /* PROFILE PAGE -------------------------------------------------------------------- */
 
 .profile-infos-user {
-  text-align: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 30px;
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
 }
 
 .profile-infos-user button {
   margin-left: 20px;
 }
 
-.profile-container-lists {
+/* .profile-container-lists {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 40px;
-}
+} */
 
 .one-list-profile {
   width: 100%;

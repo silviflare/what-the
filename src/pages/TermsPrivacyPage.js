@@ -1,5 +1,4 @@
 import { Container } from "@mui/material";
-import { Balancer } from "react-wrap-balancer";
 
 function TermsPrivacyPage() {
   return (

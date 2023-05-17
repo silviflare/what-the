@@ -159,7 +159,7 @@ function ActivityDetailsEdit(props) {
 
   return (
     <div className="container-all">
-      <div className="activity-title-like">
+      <div className="crud-title crud-title-like">
         <h1>{activity.name}</h1>
         <IconButton className="activity-title-like-button" onClick={handleLike}>
           {liked ? (
@@ -170,12 +170,8 @@ function ActivityDetailsEdit(props) {
         </IconButton>
       </div>
       <form onSubmit={handleFormSubmit}>
-        <Grid
-          container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
-        >
-          <Grid item xs={3}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={3}>
             <TextField
               fullWidth
               id="outlined-basic"
@@ -186,7 +182,7 @@ function ActivityDetailsEdit(props) {
               onChange={(e) => setName(e.target.value)}
             />
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={12} md={9}>
             <TextField
               fullWidth
               id="outlined-basic"
@@ -197,10 +193,10 @@ function ActivityDetailsEdit(props) {
               onChange={(e) => setDescription(e.target.value)}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <SelectType value={type} setValue={setType} />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">
                 Neighborhood
@@ -224,7 +220,7 @@ function ActivityDetailsEdit(props) {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <TextField
               fullWidth
               id="outlined-basic"
@@ -235,7 +231,7 @@ function ActivityDetailsEdit(props) {
               onChange={(e) => setAddress(e.target.value)}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <TextField
               fullWidth
               id="outlined-basic"
@@ -246,7 +242,7 @@ function ActivityDetailsEdit(props) {
               onChange={(e) => setMapsLink(e.target.value)}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <SelectTime value={time} setValue={setTime} />
           </Grid>
 
@@ -275,25 +271,8 @@ function ActivityDetailsEdit(props) {
               </Select>
             </FormControl>
           </Grid>
-
-          {/* <Grid item xs={6}>
-            <TextField
-              fullWidth
-              id="outlined-basic"
-              label="Indoor/Outdoor"
-              variant="outlined"
-              name="space"
-              defaultValue={space}
-              onChange={(e) => setSpace(e.target.value)}
-            />
-          </Grid> */}
         </Grid>
-        <Grid
-          className="activity-buttons"
-          container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
-        >
+        <Grid className="activity-buttons" container spacing={2}>
           <Grid item spacing={{ xs: 4, md: 4 }}>
             <Button
               type="submit"

@@ -8,7 +8,6 @@ import { Collapse, IconButton } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Filters from "./Filters";
-import CallMadeIcon from "@mui/icons-material/CallMade";
 import { Link } from "react-router-dom";
 
 function RandomActivity() {
@@ -42,7 +41,7 @@ function RandomActivity() {
   return (
     <div className="randonizer-container">
       <button className="randonizer-button" onClick={getRandomActivity}>
-        <p>What the f*** should I do today?</p>
+        <p>What the f✺✼✹✤ should I do today?</p>
       </button>
       <div cclassName="randonizer-open-collapse">
         <IconButton
