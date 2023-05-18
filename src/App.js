@@ -119,14 +119,7 @@ function App() {
             }
           />
 
-          <Route
-            path="/about"
-            element={
-              <IsAnonym>
-                <AboutPage />
-              </IsAnonym>
-            }
-          />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </div>
     </SnackbarProvider>

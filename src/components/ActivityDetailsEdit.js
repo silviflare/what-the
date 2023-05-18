@@ -186,6 +186,7 @@ function ActivityDetailsEdit(props) {
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}>
             <TextField
+              required
               fullWidth
               id="outlined-basic"
               label="Name activity"
@@ -197,6 +198,7 @@ function ActivityDetailsEdit(props) {
           </Grid>
           <Grid item xs={12} md={9}>
             <TextField
+              required
               fullWidth
               id="outlined-basic"
               label="Description activity"
@@ -265,6 +267,7 @@ function ActivityDetailsEdit(props) {
                 Indoor/Outdoor
               </InputLabel>
               <Select
+                required
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={space}

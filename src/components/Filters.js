@@ -80,7 +80,7 @@ function Filters(props) {
   return (
     <Grid container spacing={2}>
       {/* select indoor/outdoor */}
-      <Grid item xs={3}>
+      <Grid item xs={12} sm={6} md={3}>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Indoor/Outdoor</InputLabel>
 
@@ -105,17 +105,17 @@ function Filters(props) {
       </Grid>
 
       {/* select type activity */}
-      <Grid item xs={3}>
+      <Grid item xs={12} sm={6} md={3}>
         <SelectType value={type} withAll setValue={handleType} />
       </Grid>
 
       {/* select time activity */}
-      <Grid item xs={3}>
+      <Grid item xs={12} sm={6} md={3}>
         <SelectTime value={time} withAll setValue={handleTime} />
       </Grid>
 
       {/* select time neighborhood */}
-      <Grid item xs={3}>
+      <Grid item xs={12} sm={6} md={3}>
         <FormControl fullWidth>
           <InputLabel id="demo-multiple-checkbox-label">
             Neighborhood

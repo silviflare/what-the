@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# What the f\*\*\* should I do today
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+"What the fuck should I do today?" is a user-friendly platform designed to simplify your decision-making process and provide tailored recommendations based on your preferences. Whether you're a local resident seeking fresh ideas or a visitor looking to explore the city's hidden gems, this app is your ultimate companion.
 
-## Available Scripts
+Powered by technologies such as HTML, CSS, JavaScript, and React.js, the "What the fuck should I do today?" app offers a seamless and intuitive user experience. We leverage the power of Mongoose and MongoDB for efficient data storage and retrieval, while Express and Node.js provide a robust backend framework to ensure optimal performance.
 
-In the project directory, you can run:
+To enhance the visual appeal and user interface of our app, I incorporate the Material UI framework for elements like buttons, fields and dropdowns. For the rest just all my personal design skills. Additionally, I used React Wrap Balancer to optimize the presentation of the random suggestion and Notistack to provide instant feedback and notifications for a smooth CRUD experience.
 
-### `npm start`
+## So, how does "What the fuck should I do today?" work?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+It's simple! On the homepage, you'll see a "Random" button that generates exciting and unique activity suggestions with just a click. If you prefer a more customized experience, our advanced filtering options allow you to narrow down activities by neighborhood, time of day, indoor/outdoor preference, and activity type.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+But that's not all! By registering and logging in, you unlock more possibilities. Gain access to the whole list of activities that match your search criteria. You can also mark your favorite activities by liking them, making it effortless to revisit and plan future adventures.
 
-### `npm test`
+Moreover, the City Activity Generator encourages community engagement. If you stumble upon an activity that is not yet listed in our database, you can contribute by adding it yourself. Additionally, you can edit and delete activities that you have created, ensuring the accuracy and relevance of the information available.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I prioritize simplicity and user privacy. During the signup process, I only request your email and name, no complex forms. My aim is to provide you with a hassle-free experience, making decision-making effortless and enjoyable.
 
-### `npm run build`
+Join me on this journey and let "What the fuck should I do today?" be your random guide to unforgettable experiences!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technologies Used
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The City Activity Generator is built using the following technologies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- HTML: The standard markup language for creating the structure and content of web pages.
+- CSS: A stylesheet language used for describing the presentation and style of the web application.
+- JavaScript: A powerful programming language that allows for dynamic and interactive elements on web pages.
+- React.js: A JavaScript library for building user interfaces, providing reusable components and efficient rendering.
+- Mongoose: An Object Data Modeling (ODM) library for MongoDB and Node.js, simplifying interactions with the database.
+- MongoDB: A popular NoSQL database that stores data in a flexible, JSON-like format.
+- Express: A fast and minimalist web application framework for Node.js, providing a robust set of features for web applications.
+- Node.js: A JavaScript runtime built on Chrome's V8 JavaScript engine, allowing for server-side execution of JavaScript code.
+- Material UI: A popular React UI framework that provides pre-built, customizable components for easy and attractive styling.
+- React Wrap Balancer: A React component for wrapping headlines with various balancing strategies.
+- Notistack: A library for displaying feedback notifications in CRUD (Create, Read, Update, Delete) actions.
 
-### `npm run eject`
+## Features
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The City Activity Generator offers the following features:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Random Activity Suggestions: On the homepage, you can click the "Random" button to receive a suggestion for a random activity to do in Berlin. If you're feeling adventurous, give it a try!
+- Advanced Filtering: You can further refine the suggestions by applying filters such as neighborhood, time of day, indoor/outdoor, and activity type. This allows you to customize the results based on your preferences.
+- User Registration and Login: By registering and logging in, you unlock additional features. You gain access to a broader list of activities that match your search criteria, giving you more options to choose from.
+- Activity Likes: You have the ability to like activities that interest you, so you can easily access and review them later in your user profile. This feature helps you keep track of the activities that caught your attention.
+- Contribute to the Database: If you come across an activity that is missing from the app, you can add it to the database yourself. Additionally, you have the power to edit and delete the activities you've created, ensuring the accuracy and relevance of the information available to other users.

@@ -44,6 +44,7 @@ export const SelectType = (props) => {
         Type of activity
       </InputLabel>
       <Select
+        required
         disabled={props.disabled}
         labelId="demo-multiple-checkbox-label"
         id="demo-multiple-checkbox"

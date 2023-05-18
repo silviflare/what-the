@@ -43,7 +43,7 @@ function RandomActivity() {
   return (
     <div className="randonizer-container">
       <button className="randonizer-button" onClick={getRandomActivity}>
-        <p>What the f✺✼✹✤ should I do today?</p>
+        <p>What the f✻✹✽ should I do today?</p>
       </button>
       <div className="randonizer-open-collapse">
         <IconButton

@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "what-the-3.svg",
+      "src": "what-the-static.svg",
       "type": "image/svg",
       "sizes": "192x192"
     },
     {
-      "src": "what-the-3.svg",
+      "src": "what-the-static.svg",
       "type": "image/svg",
       "sizes": "512x512"
     }

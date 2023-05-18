@@ -14,8 +14,7 @@ function Navbar() {
       <div className="nav-container">
         <div className="logo-container">
           <Link className="logo-navbar" to="/">
-            {/* <img src="./what-the-3.png" alt="what-the-logo" /> */}
-            <img src="/what-the-3.svg" alt="what-the-logo" />
+            <img src="/what-the-logo.gif" alt="what-the-logo" />
           </Link>
         </div>
 
@@ -24,6 +23,12 @@ function Navbar() {
             <Link to="/activitysearch">
               <Button type="submit" variant="contained" color="primary">
                 Activity filter
+              </Button>
+            </Link>
+
+            <Link to="/about">
+              <Button type="submit" variant="contained" color="primary">
+                About
               </Button>
             </Link>
 
@@ -42,6 +47,11 @@ function Navbar() {
 
         {!isLoggedIn && (
           <div className="nav-right-container">
+            <Link to="/about">
+              <Button type="submit" variant="contained" color="primary">
+                About
+              </Button>
+            </Link>
             <Link to="/login">
               <Button type="submit" variant="contained" color="primary">
                 Log In

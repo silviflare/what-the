@@ -76,12 +76,13 @@ h2 {
 
 .nav-container {
   display: flex;
+
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   height: 100px;
-  padding: 0 30px;
+  padding: 10px 15px;
 }
 
 .nav-right-container {
@@ -93,27 +94,27 @@ h2 {
 }
 
 .logo-navbar img {
-  width: 40px;
+  width: 80px;
 }
 
 /* HOMEPAGE  ---------------------------------------------------------------------- */
 
 .container-homepage {
-  /* background-color: hsla(0, 0%, 100%, 1);
+  background-color: hsla(0, 0%, 100%, 1);
   background-image: radial-gradient(
       at var(--gradient-one) var(--gradient-two),
       hsla(0, 0%, 100%, 1) 0px,
       transparent 50%
     ),
     radial-gradient(at 91% 11%, hsla(0, 0%, 100%, 1) 0px, transparent 50%),
-    radial-gradient(at 43% 43%, hsla(308, 88%, 73%, 1) 0px, transparent 50%),
-    radial-gradient(at 41% 86%, hsla(236, 100%, 73%, 1) 0px, transparent 50%),
+    radial-gradient(at 43% 43%, rgb(255, 186, 246) 0px, transparent 50%),
+    radial-gradient(at 41% 86%, hsla(236, 40%, 73%, 1) 0px, transparent 50%),
     radial-gradient(at 7% 92%, hsla(0, 0%, 100%, 1) 0px, transparent 50%),
-    radial-gradient(at 72% 24%, hsla(242, 100%, 73%, 1) 0px, transparent 50%),
+    radial-gradient(at 72% 24%, hsla(242, 60%, 73%, 1) 0px, transparent 50%),
     radial-gradient(at 70% 100%, hsla(0, 0%, 100%, 1) 0px, transparent 50%),
-    radial-gradient(at 50% 40%, hsla(356, 100%, 73%, 1) 0px, transparent 50%),
-    radial-gradient(at 28% 59%, hsla(257, 100%, 73%, 1) 0px, transparent 50%);
- */
+    radial-gradient(at 50% 40%, rgb(255, 188, 192) 0px, transparent 50%),
+    radial-gradient(at 28% 59%, rgb(190, 175, 229) 0px, transparent 50%);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -135,7 +136,7 @@ h2 {
   color: #000;
   border-radius: 50px;
   border: 1px solid #000;
-  background: rgba(255, 255, 255, 0.131);
+  background: #ffdf6f;
   cursor: pointer;
 }
 
@@ -259,4 +260,5 @@ signin-content {
 .what-the {
   color: #7087f7;
   font-style: italic;
+  text-decoration: none;
 }

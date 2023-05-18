@@ -116,11 +116,12 @@ function AddActivity(props) {
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}>
             <TextField
+              required
               fullWidth
               id="outlined-basic"
-              label="Name activity/place"
+              label="Name"
               variant="outlined"
-              name="Name activity"
+              name="Name"
               // helperText="Some important text"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -129,6 +130,7 @@ function AddActivity(props) {
 
           <Grid item xs={12} md={9}>
             <TextField
+              required
               fullWidth
               id="outlined-basic"
               label="Description activity"
@@ -206,6 +208,7 @@ function AddActivity(props) {
                 Indoor/Outdoor
               </InputLabel>
               <Select
+                required
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={space}

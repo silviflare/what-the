@@ -7,8 +7,8 @@ import authService from "./../services/auth.service";
 import { Box, Button, Container, Grid, TextField } from "@mui/material";
 
 function LoginPage(props) {
-  const [email, setEmail] = useState("silvia@gmail.com"); // TODO: delete !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  const [password, setPassword] = useState("Asdf_1234"); // TODO: delete !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
