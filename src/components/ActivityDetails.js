@@ -15,6 +15,7 @@ import {
   Select,
   TextField,
   Checkbox,
+  Box,
 } from "@mui/material";
 import { SelectType } from "./SelectType";
 import { SelectTime } from "./SelectTime";
@@ -52,6 +53,8 @@ function ActivityDetails(props) {
 
   const [activity, setActivity] = useState(null);
 
+  const [loading, setLoading] = useState(true);
+
   const { user } = useContext(AuthContext);
   const isFromUser = user?._id === activity?.createdBy;
 
@@ -60,24 +63,26 @@ function ActivityDetails(props) {
   const spaces = ["indoor", "outdoor"];
 
   const neighborhoods = [
-    "Mitte",
-    "Neukölln",
+    "Brandenburg",
+    "Charlottenburg",
     "Friedrichshain",
     "Kreuzberg",
-    "Charlottenburg",
-    "Wilmersdorf",
+    "Köpenick",
+    "Lichtenberg",
+    "Moabit",
+    "Marzahn",
+    "Mitte",
+    "Neukölln",
     "Pankow",
     "Prenzlauer Berg",
-    "Lichtenberg",
     "Tempelhof",
-    "Schöneberg",
     "Treptow",
-    "Köpenick",
-    "Steglitz",
-    "Marzahn",
     "Reinickendorf",
+    "Schöneberg",
     "Spandau",
-    "Brandenburg",
+    "Steglitz",
+    "Wedding",
+    "Wilmersdorf",
   ];
 
   useEffect(() => {
@@ -99,7 +104,8 @@ function ActivityDetails(props) {
         setAddress(oneActivity.address);
         setMapsLink(oneActivity.mapsLink);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error))
+      .finally(() => setLoading(false));
   }, [activityId]);
 
   const handleLike = () => {
@@ -119,11 +125,13 @@ function ActivityDetails(props) {
       });
   };
 
-  if (!activity) {
+  if (loading) return null;
+
+  if (!activity && !loading) {
     return (
-      <div>
-        <h1>There are not activities</h1>
-      </div>
+      <Box mt={40}>
+        <h1>Activity not found :(</h1>
+      </Box>
     );
   }
 

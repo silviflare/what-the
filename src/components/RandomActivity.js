@@ -23,7 +23,7 @@ function RandomActivity() {
 
   const getRandomActivity = () => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/api/random-activity`, {
+      .get(`${API_URL}/api/random-activity`, {
         params: filters,
       })
       .then((response) => {
@@ -54,7 +54,7 @@ function RandomActivity() {
         </IconButton>
       </div>
       <Collapse in={isOpen}>
-        <Filters onChange={onFilterChange} />
+        <Filters className="randonizer-filters" onChange={onFilterChange} />
       </Collapse>
 
       <Collapse in={isOpenActivity}>

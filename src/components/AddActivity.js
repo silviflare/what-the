@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { API_URL } from "../config/config";
+import { useSnackbar } from "notistack";
 
 // Material UI
 import {
@@ -41,27 +42,31 @@ function AddActivity(props) {
   const [address, setAddress] = useState("");
   const [mapsLink, setMapsLink] = useState("");
 
+  const { enqueueSnackbar } = useSnackbar();
+
   const spaces = ["indoor", "outdoor"];
 
   const neighborhoods = [
-    "Mitte",
-    "Neukölln",
+    "Brandenburg",
+    "Charlottenburg",
     "Friedrichshain",
     "Kreuzberg",
-    "Charlottenburg",
-    "Wilmersdorf",
+    "Köpenick",
+    "Lichtenberg",
+    "Moabit",
+    "Marzahn",
+    "Mitte",
+    "Neukölln",
     "Pankow",
     "Prenzlauer Berg",
-    "Lichtenberg",
     "Tempelhof",
-    "Schöneberg",
     "Treptow",
-    "Köpenick",
-    "Steglitz",
-    "Marzahn",
     "Reinickendorf",
+    "Schöneberg",
     "Spandau",
-    "Brandenburg",
+    "Steglitz",
+    "Wedding",
+    "Wilmersdorf",
   ];
 
   const handleSubmit = (e) => {
@@ -94,7 +99,9 @@ function AddActivity(props) {
         setTime([]);
         setSpace("");
 
-        props.onCreateSuccess();
+        props.onCreateSuccess?.();
+
+        enqueueSnackbar("Added activity", { variant: "success" });
       })
       .catch((err) => console.log(err));
   };
@@ -105,7 +112,7 @@ function AddActivity(props) {
         <h1>Add a new activity</h1>
       </div>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} autocomplete="off">
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}>
             <TextField
@@ -129,7 +136,7 @@ function AddActivity(props) {
               name="Description activity"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              helperText="Maximum 10 words."
+              helperText="Maximum 12 words."
             />
           </Grid>
 

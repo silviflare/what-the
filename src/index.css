@@ -1,3 +1,8 @@
+:root {
+  --gradient-one: 0%;
+  --gradient-two: 0;
+}
+
 body {
   margin: 0;
   font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
@@ -96,7 +101,7 @@ h2 {
 .container-homepage {
   /* background-color: hsla(0, 0%, 100%, 1);
   background-image: radial-gradient(
-      at 0% 0%,
+      at var(--gradient-one) var(--gradient-two),
       hsla(0, 0%, 100%, 1) 0px,
       transparent 50%
     ),
@@ -138,7 +143,6 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   gap: 10px;
 }
 
@@ -156,6 +160,10 @@ h2 {
   font-size: 3rem;
 }
 
+.randonizer-open-collapse {
+  text-align: center;
+}
+
 .randonizer-container-headline a {
   text-decoration: none;
   color: #7087f7;
@@ -163,6 +171,10 @@ h2 {
 
 .randonizer-container-headline p {
   margin: 0;
+}
+
+.randonizer-filters {
+  padding-bottom: 20px;
 }
 
 /* FILTER PAGE  -------------------------------------------------------------------- */

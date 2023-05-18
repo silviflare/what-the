@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config/config";
+import { useSnackbar } from "notistack";
 
 // Material UI
 import {
@@ -16,6 +17,7 @@ import {
   Select,
   TextField,
   Checkbox,
+  Box,
 } from "@mui/material";
 import { SelectType } from "./SelectType";
 import { SelectTime } from "./SelectTime";
@@ -48,34 +50,40 @@ function ActivityDetailsEdit(props) {
   const [address, setAddress] = useState("");
   const [mapsLink, setMapsLink] = useState("");
 
+  const { enqueueSnackbar } = useSnackbar();
+
   const [liked, setLiked] = useState(false);
   const { activityId } = useParams();
 
   const [activity, setActivity] = useState(null);
+
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
   const spaces = ["indoor", "outdoor"];
 
   const neighborhoods = [
-    "Mitte",
-    "Neukölln",
+    "Brandenburg",
+    "Charlottenburg",
     "Friedrichshain",
     "Kreuzberg",
-    "Charlottenburg",
-    "Wilmersdorf",
+    "Köpenick",
+    "Lichtenberg",
+    "Moabit",
+    "Marzahn",
+    "Mitte",
+    "Neukölln",
     "Pankow",
     "Prenzlauer Berg",
-    "Lichtenberg",
     "Tempelhof",
-    "Schöneberg",
     "Treptow",
-    "Köpenick",
-    "Steglitz",
-    "Marzahn",
     "Reinickendorf",
+    "Schöneberg",
     "Spandau",
-    "Brandenburg",
+    "Steglitz",
+    "Wedding",
+    "Wilmersdorf",
   ];
 
   useEffect(() => {
@@ -97,7 +105,8 @@ function ActivityDetailsEdit(props) {
         setAddress(oneActivity.address);
         setMapsLink(oneActivity.mapsLink);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error))
+      .finally(() => setLoading(false));
   }, [activityId]);
 
   const handleFormSubmit = (e) => {
@@ -118,6 +127,7 @@ function ActivityDetailsEdit(props) {
     axios
       .put(`${API_URL}/api/activities/${activityId}`, requestBody)
       .then((response) => {
+        enqueueSnackbar("Updated activity", { variant: "success" });
         navigate(`/profile`);
       });
   };
@@ -127,7 +137,8 @@ function ActivityDetailsEdit(props) {
     axios
       .delete(`${API_URL}/api/activities/${activityId}`)
       .then(() => {
-        navigate(`/activitysearch`);
+        enqueueSnackbar("Deleted activity", { variant: "success" });
+        navigate(-2);
       })
       .catch((err) => console.log(err));
   };
@@ -149,11 +160,13 @@ function ActivityDetailsEdit(props) {
       });
   };
 
-  if (!activity) {
+  if (loading) return null;
+
+  if (!activity && !loading) {
     return (
-      <div>
-        <h1>There are not activities</h1>
-      </div>
+      <Box mt={40}>
+        <h1>Activity not found :(</h1>
+      </Box>
     );
   }
 
@@ -169,7 +182,7 @@ function ActivityDetailsEdit(props) {
           )}
         </IconButton>
       </div>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} autocomplete="off">
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}>
             <TextField
@@ -273,7 +286,7 @@ function ActivityDetailsEdit(props) {
           </Grid>
         </Grid>
         <Grid className="activity-buttons" container spacing={2}>
-          <Grid item spacing={{ xs: 4, md: 4 }}>
+          <Grid item>
             <Button
               type="submit"
               variant="contained"

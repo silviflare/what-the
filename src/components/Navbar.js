@@ -15,7 +15,7 @@ function Navbar() {
         <div className="logo-container">
           <Link className="logo-navbar" to="/">
             {/* <img src="./what-the-3.png" alt="what-the-logo" /> */}
-            <img src="../what-the-3.svg" alt="what-the-logo" />
+            <img src="/what-the-3.svg" alt="what-the-logo" />
           </Link>
         </div>
 

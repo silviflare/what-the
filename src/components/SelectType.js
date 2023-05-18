@@ -24,12 +24,15 @@ const types = [
   "food",
   "drinks",
   "exhibition",
-  "tour",
-  "park",
-  "biergarten",
   "party",
-  "drink",
+  "sport",
+  "theater",
+  "concert",
   "market",
+  "tour",
+  "shop",
+  "market",
+  "exploration",
 ];
 
 export const SelectType = (props) => {
