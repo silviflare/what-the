@@ -19,6 +19,7 @@ import {
 import { SelectType } from "./SelectType";
 import { SelectTime } from "./SelectTime";
 import SaveIcon from "@mui/icons-material/Save";
+import { useNavigate } from "react-router-dom";
 
 // Settings Material UI
 const ITEM_HEIGHT = 48;
@@ -43,6 +44,8 @@ function AddActivity(props) {
   const [mapsLink, setMapsLink] = useState("");
 
   const { enqueueSnackbar } = useSnackbar();
+
+  const navigate = useNavigate();
 
   const spaces = ["indoor", "outdoor"];
 
@@ -102,6 +105,7 @@ function AddActivity(props) {
         props.onCreateSuccess?.();
 
         enqueueSnackbar("Added activity", { variant: "success" });
+        navigate(`/profile`);
       })
       .catch((err) => console.log(err));
   };

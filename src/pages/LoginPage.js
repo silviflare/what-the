@@ -45,7 +45,7 @@ function LoginPage(props) {
         <Container maxWidth="sm">
           <div className="login-content">
             <h1>Login</h1>
-            <form onSubmit={handleLoginSubmit}>
+            <form onSubmit={handleLoginSubmit} autoComplete="off">
               <Grid container direction="column" spacing={2}>
                 <Grid item>
                   <TextField

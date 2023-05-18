@@ -35,8 +35,9 @@ function AboutPage() {
           <br />
           <br />
           <h3>And why should you sign in?</h3>
-          By signing in you can see all the activites and filter over them,
-          save/like your favorite activites, and add activities to the database.
+          By signing in you can see all the activities and filter over them,
+          save/like your favorite activities, and add activities to the
+          database.
           <br />
           <br />
           {/* If you want to support me <a href="https://www.buymeacoffee.com/">Buy me a coffee</a> */}

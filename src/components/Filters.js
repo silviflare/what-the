@@ -106,12 +106,12 @@ function Filters(props) {
 
       {/* select type activity */}
       <Grid item xs={12} sm={6} md={3}>
-        <SelectType value={type} withAll setValue={handleType} />
+        <SelectType value={type} setValue={handleType} />
       </Grid>
 
       {/* select time activity */}
       <Grid item xs={12} sm={6} md={3}>
-        <SelectTime value={time} withAll setValue={handleTime} />
+        <SelectTime value={time} setValue={handleTime} />
       </Grid>
 
       {/* select time neighborhood */}

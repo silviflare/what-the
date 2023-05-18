@@ -50,7 +50,7 @@ function SignupPage(props) {
         <Container maxWidth="sm">
           <div className="signin-content">
             <h1>Sign Up</h1>
-            <form onSubmit={handleSignupSubmit}>
+            <form onSubmit={handleSignupSubmit} autoComplete="off">
               <Grid container direction="column" spacing={2}>
                 <Grid item>
                   <TextField

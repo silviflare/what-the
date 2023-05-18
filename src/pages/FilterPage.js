@@ -119,12 +119,12 @@ function ActivityFilterPage() {
 
         {/* select type activity */}
         <Grid item xs={12} sm={6} md={3}>
-          <SelectType value={type} withAll setValue={setType} />
+          <SelectType value={type} setValue={setType} />
         </Grid>
 
         {/* select time activity */}
         <Grid item xs={12} sm={6} md={3}>
-          <SelectTime value={time} withAll setValue={setTime} />
+          <SelectTime value={time} setValue={setTime} />
         </Grid>
 
         {/* select time neighborhood */}
