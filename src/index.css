@@ -99,7 +99,7 @@ h2 {
 /* HOMEPAGE  ---------------------------------------------------------------------- */
 
 .container-homepage {
-  /* background-color: hsla(0, 0%, 100%, 1);
+  background-color: hsla(0, 0%, 100%, 1);
   background-image: radial-gradient(
       at var(--gradient-one) var(--gradient-two),
       hsla(0, 0%, 100%, 1) 0px,
@@ -113,7 +113,7 @@ h2 {
     radial-gradient(at 70% 100%, hsla(0, 0%, 100%, 1) 0px, transparent 50%),
     radial-gradient(at 50% 40%, hsla(356, 100%, 73%, 1) 0px, transparent 50%),
     radial-gradient(at 28% 59%, hsla(257, 100%, 73%, 1) 0px, transparent 50%);
- */
+
   display: flex;
   flex-direction: column;
   justify-content: center;

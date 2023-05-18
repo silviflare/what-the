@@ -138,7 +138,7 @@ function ActivityDetailsEdit(props) {
       .delete(`${API_URL}/api/activities/${activityId}`)
       .then(() => {
         enqueueSnackbar("Deleted activity", { variant: "success" });
-        navigate(-2);
+        navigate(`/profile`);
       })
       .catch((err) => console.log(err));
   };
