@@ -43,7 +43,9 @@ function RandomActivity() {
   return (
     <div className="randonizer-container">
       <button className="randonizer-button" onClick={getRandomActivity}>
-        <p>What the f✻✹✽ should I do today?</p>
+        <p>
+          <Balancer ratio={0.6}>What the f✻✹✽ should I do today?</Balancer>
+        </p>
       </button>
       <div className="randonizer-open-collapse">
         <IconButton
@@ -61,17 +63,14 @@ function RandomActivity() {
         <div className="randonizer-container-headline">
           {oneActivity && (
             <div className="randonizer-headline">
-              <Balancer ratio={0.6}>
-                {oneActivity.description}
-
-                <Link
-                  to={oneActivity.mapsLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  ↗
-                </Link>
-              </Balancer>
+              <Balancer ratio={0.6}>{oneActivity.description}</Balancer>
+              <Link
+                to={oneActivity.mapsLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ↗
+              </Link>
             </div>
           )}
         </div>

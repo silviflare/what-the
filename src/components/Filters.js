@@ -26,25 +26,26 @@ const MenuProps = {
 // Input
 const spaces = ["", "Indoor", "Outdoor"];
 const neighborhoods = [
-  "All",
-  "Mitte",
-  "Neukölln",
+  "Brandenburg",
+  "Charlottenburg",
   "Friedrichshain",
   "Kreuzberg",
-  "Charlottenburg",
-  "Wilmersdorf",
+  "Köpenick",
+  "Lichtenberg",
+  "Moabit",
+  "Marzahn",
+  "Mitte",
+  "Neukölln",
   "Pankow",
   "Prenzlauer Berg",
-  "Lichtenberg",
   "Tempelhof",
-  "Schöneberg",
   "Treptow",
-  "Köpenick",
-  "Steglitz",
-  "Marzahn",
   "Reinickendorf",
+  "Schöneberg",
   "Spandau",
-  "Brandenburg",
+  "Steglitz",
+  "Wedding",
+  "Wilmersdorf",
 ];
 
 function Filters(props) {

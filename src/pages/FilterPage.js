@@ -44,7 +44,6 @@ const MenuProps = {
 // Input
 const spaces = ["", "Indoor", "Outdoor"];
 const neighborhoods = [
-  "All",
   "Mitte",
   "Neukölln",
   "Friedrichshain",

@@ -131,13 +131,19 @@ h2 {
   font-family: "Playfair Display", serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 
   color: #000;
   border-radius: 50px;
   border: 1px solid #000;
   background: #ffdf6f;
   cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  randonizer-button {
+    font-size: 1.5rem;
+  }
 }
 
 .randonizer-container {
@@ -159,6 +165,12 @@ h2 {
   text-align: center;
   font-weight: 800;
   font-size: 3rem;
+}
+
+@media (max-width: 800px) {
+  randonizer-container-headline {
+    font-size: 2rem;
+  }
 }
 
 .randonizer-open-collapse {
