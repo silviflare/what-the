@@ -116,7 +116,7 @@ function AddActivity(props) {
         <h1>Add a new activity</h1>
       </div>
 
-      <form onSubmit={handleSubmit} autocomplete="off">
+      <form onSubmit={handleSubmit} autoComplete="off">
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}>
             <TextField
