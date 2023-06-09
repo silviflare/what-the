@@ -1,6 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import NavbarMobile from "./components/NavbarMobile";
 import HomePage from "./pages/HomePage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
@@ -38,6 +39,7 @@ function App() {
     <SnackbarProvider>
       <div className="App">
         <Navbar />
+        <NavbarMobile />
 
         <Routes>
           <Route exact path="/" element={<HomePage />} />
