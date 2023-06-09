@@ -38,6 +38,7 @@ function App() {
   return (
     <SnackbarProvider>
       <div className="App">
+        <div className="page-background"></div>
         <Navbar />
         <NavbarMobile />
 

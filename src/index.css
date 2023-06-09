@@ -12,11 +12,27 @@ body {
 }
 
 .big-bg {
+  /*
+  background-color: hsla(0, 0%, 100%, 1);
+  background-image: radial-gradient(
+      at var(--gradient-one) var(--gradient-two),
+      hsla(0, 0%, 100%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 91% 11%, hsla(0, 0%, 100%, 1) 0px, transparent 50%),
+    radial-gradient(at 43% 43%, rgb(255, 186, 246) 0px, transparent 50%),
+    radial-gradient(at 41% 86%, hsla(236, 40%, 73%, 1) 0px, transparent 50%),
+    radial-gradient(at 7% 92%, hsla(0, 0%, 100%, 1) 0px, transparent 50%),
+    radial-gradient(at 72% 24%, hsla(242, 60%, 73%, 1) 0px, transparent 50%),
+    radial-gradient(at 70% 100%, hsla(0, 0%, 100%, 1) 0px, transparent 50%),
+    radial-gradient(at 50% 40%, rgb(255, 188, 192) 0px, transparent 50%),
+    radial-gradient(at 28% 59%, rgb(190, 175, 229) 0px, transparent 50%); */
   background-image: url("/src/images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   top: 0;
   left: 0;
   position: absolute;
-  background-repeat: no-repeat;
   right: 0;
   height: 100vh;
   z-index: -1;
@@ -214,32 +230,12 @@ h2 {
 /* HOMEPAGE  ---------------------------------------------------------------------- */
 
 .container-homepage {
-  background-image: url("/src/images/bg.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  /* background-color: hsla(0, 0%, 100%, 1);
-  background-image: radial-gradient(
-      at var(--gradient-one) var(--gradient-two),
-      hsla(0, 0%, 100%, 1) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 91% 11%, hsla(0, 0%, 100%, 1) 0px, transparent 50%),
-    radial-gradient(at 43% 43%, rgb(255, 186, 246) 0px, transparent 50%),
-    radial-gradient(at 41% 86%, hsla(236, 40%, 73%, 1) 0px, transparent 50%),
-    radial-gradient(at 7% 92%, hsla(0, 0%, 100%, 1) 0px, transparent 50%),
-    radial-gradient(at 72% 24%, hsla(242, 60%, 73%, 1) 0px, transparent 50%),
-    radial-gradient(at 70% 100%, hsla(0, 0%, 100%, 1) 0px, transparent 50%),
-    radial-gradient(at 50% 40%, rgb(255, 188, 192) 0px, transparent 50%),
-    radial-gradient(at 28% 59%, rgb(190, 175, 229) 0px, transparent 50%); */
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   min-height: calc(100vh - 120px);
-  /* min-height: 100vh; */
   margin-top: 120px;
 }
 
@@ -271,7 +267,7 @@ h2 {
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-  /* margin-bottom: 60px; */
+  margin-bottom: 60px;
 }
 
 @media (max-width: 800px) {
