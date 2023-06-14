@@ -69,7 +69,7 @@ function RandomActivity() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                ⬈➙
+                ➙
               </Link>
             </div>
           )}

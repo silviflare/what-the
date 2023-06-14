@@ -133,14 +133,19 @@ function ActivityDetailsEdit(props) {
   };
 
   const deleteActivity = () => {
-    // Make a DELETE request to delete the project
-    axios
-      .delete(`${API_URL}/api/activities/${activityId}`)
-      .then(() => {
-        enqueueSnackbar("Deleted activity", { variant: "success" });
-        navigate(`/profile`);
-      })
-      .catch((err) => console.log(err));
+    // eslint-disable-next-line no-restricted-globals
+    let shouldDelete = confirm(
+      "Do you really want to delete this awesome activity?"
+    );
+    if (shouldDelete) {
+      axios
+        .delete(`${API_URL}/api/activities/${activityId}`)
+        .then(() => {
+          enqueueSnackbar("Deleted activity", { variant: "success" });
+          navigate(`/profile`);
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   const handleLike = () => {
