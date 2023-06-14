@@ -48,19 +48,21 @@ function Navbar() {
 
           {!isLoggedIn && (
             <div className="nav-elements">
-              <Link to="/about">
-                <Button type="submit" variant="contained" color="primary">
-                  About
+              <Link to="/signup">
+                <Button variant="outlined" onClick={logOutUser}>
+                  Sign Up
                 </Button>
               </Link>
+
               <Link to="/login">
                 <Button type="submit" variant="contained" color="primary">
                   Log In
                 </Button>
               </Link>
-              <Link to="/signup">
-                <Button variant="outlined" onClick={logOutUser}>
-                  Sign Up
+
+              <Link to="/about">
+                <Button type="submit" variant="contained" color="primary">
+                  About
                 </Button>
               </Link>
             </div>

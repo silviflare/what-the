@@ -40,11 +40,14 @@ function LoginPage(props) {
   };
 
   return (
-    <div className="container-center">
+    <div className="container-small-wrapper">
       <div className="container-small">
         <Container maxWidth="sm">
           <div className="login-content">
             <h1>Login</h1>
+            <Box mt={4} mb={4}>
+              Don't have an account yet? <Link to={"/signup"}> Sign Up</Link>
+            </Box>
             <form onSubmit={handleLoginSubmit} autoComplete="off">
               <Grid container direction="column" spacing={2}>
                 <Grid item>
@@ -78,9 +81,6 @@ function LoginPage(props) {
               </Grid>
             </form>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <Box mt={4} mb={4}>
-              Don't have an account yet? <Link to={"/signup"}> Sign Up</Link>
-            </Box>
           </div>
         </Container>
       </div>

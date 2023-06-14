@@ -11,6 +11,9 @@ export const theme = createTheme({
       main: "#FFA552",
     },
   },
+  typography: {
+    fontSize: "1rem",
+  },
   components: {
     MuiButton: {
       styleOverrides: {
@@ -38,7 +41,7 @@ export const theme = createTheme({
             marginLeft: 18,
           },
           borderRadius: 30,
-          paddingLeft: 18,
+          // paddingLeft: 18,
         },
       },
     },

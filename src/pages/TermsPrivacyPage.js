@@ -2,7 +2,7 @@ import { Container } from "@mui/material";
 
 function TermsPrivacyPage() {
   return (
-    <div className="container-all terms-conditions">
+    <div className="container-all text-pages">
       <Container maxWidth="md">
         <h1>Terms of Service & Privacy Policy</h1>
 

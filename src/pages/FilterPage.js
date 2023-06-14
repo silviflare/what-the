@@ -42,7 +42,7 @@ const MenuProps = {
 };
 
 // Input
-const spaces = ["", "Indoor", "Outdoor"];
+const spaces = ["Indoor", "Outdoor"];
 const neighborhoods = [
   "Mitte",
   "Neukölln",

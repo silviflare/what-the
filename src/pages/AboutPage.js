@@ -7,24 +7,24 @@ function AboutPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="container-all terms-conditions">
+    <div className="container-all text-pages">
       <Container maxWidth="md">
         <h1>About</h1>
         <p>
-          Sometime you want to go out and do something but you don´t know
-          what.❓
+          ❓Sometimes you want to go out and do something but you don´t know
+          what
           <br />
           <br />
-          Sometimes you need someone else to decide for you. 🤷🏻‍♀️
+          🤷🏻‍♀️ Sometimes you need someone else to decide for you
           <br />
           <br />
-          This "someone" could be a website. 🧐🖥️
+          🖥️ This "someone" could be a website
           <br />
           <br />
-          You are on that website! 😃🙌🏻🤘🫶👏❤️
+          🤘 You are on that website!
           <br />
           <br />
-          I´m{" "}
+          👋🏻 Hello! I´m{" "}
           <a
             className="what-the"
             href="https://www.linkedin.com/in/silvia-sarmiento-guizan/"

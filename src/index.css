@@ -9,6 +9,7 @@ body {
     "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 0.9rem;
 }
 
 .big-bg {
@@ -43,7 +44,10 @@ h1 {
   font-weight: 800;
   font-style: normal;
   font-size: 2.5rem;
+  line-height: 2.5rem;
   text-align: center;
+  padding-bottom: 30px;
+  margin: 0;
 }
 
 h2 {
@@ -55,18 +59,24 @@ h2 {
 
 .container-all {
   position: relative;
-  top: 110px;
+  top: 120px;
   margin: 0 20px;
   border-radius: 20px;
   background-color: #fff;
-  padding: 20px 40px;
-  min-height: calc(100vh - 150px);
+  padding: 40px 40px;
+  min-height: calc(100vh - 220px);
   box-shadow: 0 0 80px -45px rgba(33, 35, 36, 0.35),
     0 0 25.5px -45px rgba(33, 35, 36, 0.22),
     0 0 6.5px -45px rgba(33, 35, 36, 0.16);
 }
 
-.container-center {
+@media (max-width: 800px) {
+  .container-all {
+    padding: 40px 20px;
+  }
+}
+
+.container-small-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -77,13 +87,21 @@ h2 {
 }
 
 .container-small {
-  width: 60%;
   border-radius: 20px;
+  text-align: center;
+  min-width: 50%;
   background-color: #fff;
-  padding: 20px 40px;
+  padding: 40px 40px;
   box-shadow: 0 0 80px -45px rgba(33, 35, 36, 0.35),
     0 0 25.5px -45px rgba(33, 35, 36, 0.22),
     0 0 6.5px -45px rgba(33, 35, 36, 0.16);
+}
+
+@media (max-width: 800px) {
+  .container-small {
+    width: calc(100vw - 80px);
+    padding: 40px 20px;
+  }
 }
 
 /* NAVBAR  ---------------------------------------------------------------------- */
@@ -133,7 +151,7 @@ h2 {
   width: 80px;
 }
 .logo-container {
-  z-index: 100;
+  /* z-index: 100; */
   position: relative;
 }
 
@@ -257,7 +275,6 @@ h2 {
 
 @media (max-width: 800px) {
   .randonizer-button {
-    width: 100%;
     font-size: 1rem;
   }
 }
@@ -342,31 +359,24 @@ h2 {
 
 /* LOGIN + SIGNIN  ----------------------------------------------------------------- */
 
-/* .login-container,
-signin-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 100%;
-  min-height: calc(100vh - 200px);
-  min-height: 100vh;
-} */
-
+.terms-conditions {
+  text-align: left;
+}
 /* PROFILE PAGE -------------------------------------------------------------------- */
 
 .profile-infos-user {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding-bottom: 30px;
   @media (max-width: 800px) {
     flex-direction: column;
+    text-align: center;
   }
 }
 
 .profile-infos-user button {
-  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
 }
 
 /* .profile-container-lists {
@@ -380,16 +390,16 @@ signin-content {
   width: 100%;
 }
 
-/* TERMS & CONDITIONS -------------------------------------------------------------------- */
+/* TEXT PAGES (TERMS & ABOUT) -------------------------------------------------------------------- */
 
-.terms-conditions h1 {
+.text-pages h1 {
   padding-bottom: 20px;
   padding-top: 20px;
 }
 
-.terms-conditions p {
-  font-size: 1.1rem;
+.text-pages p {
   line-height: 1.6rem;
+  /* text-align: center; */
 }
 
 .what-the {

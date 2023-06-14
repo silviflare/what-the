@@ -47,21 +47,36 @@ function Navbar() {
         {isLoggedIn && (
           <div className="nav-mobile-elements">
             <Link to="/activitysearch">
-              <Button type="submit" variant="contained" color="primary">
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                onClick={handleShowNavbar}
+              >
                 Activity filter
               </Button>
             </Link>
 
-            <Link to="/about">
-              <Button type="submit" variant="contained" color="primary">
-                About
+            <Link to={`/profile`}>
+              <Button
+                type="submit"
+                variant="outlined"
+                color="primary"
+                onClick={handleShowNavbar}
+              >
+                <Person2Icon />
+                &nbsp; <span> {user && user.name}</span>
               </Button>
             </Link>
 
-            <Link to={`/profile`}>
-              <Button type="submit" variant="outlined" color="primary">
-                <Person2Icon />
-                &nbsp; <span> {user && user.name}</span>
+            <Link to="/about">
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                onClick={handleShowNavbar}
+              >
+                About
               </Button>
             </Link>
 
@@ -73,19 +88,34 @@ function Navbar() {
 
         {!isLoggedIn && (
           <div className="nav-mobile-elements">
-            <Link to="/about">
-              <Button type="submit" variant="contained" color="primary">
-                About
+            <Link to="/signup">
+              <Button
+                variant="outlined"
+                onClick={() => {
+                  handleShowNavbar();
+                }}
+              >
+                Sign Up
               </Button>
             </Link>
             <Link to="/login">
-              <Button type="submit" variant="contained" color="primary">
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                onClick={handleShowNavbar}
+              >
                 Log In
               </Button>
             </Link>
-            <Link to="/signup">
-              <Button variant="outlined" onClick={logOutUser}>
-                Sign Up
+            <Link to="/about">
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                onClick={handleShowNavbar}
+              >
+                About
               </Button>
             </Link>
           </div>

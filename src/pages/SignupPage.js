@@ -45,11 +45,14 @@ function SignupPage(props) {
   };
 
   return (
-    <div className="container-center">
+    <div className="container-small-wrapper">
       <div className="container-small">
         <Container maxWidth="sm">
           <div className="signin-content">
             <h1>Sign Up</h1>
+            <Box mt={4} mb={4}>
+              Already have account? <Link to={"/login"}> Login</Link>
+            </Box>
             <form onSubmit={handleSignupSubmit} autoComplete="off">
               <Grid container direction="column" spacing={2}>
                 <Grid item>
@@ -90,11 +93,11 @@ function SignupPage(props) {
                 </Grid>
                 <Grid item>
                   <FormControlLabel
-                    required={true}
+                    className="terms-conditions"
                     control={<Checkbox />}
                     label={
                       <div>
-                        <span>By signing up, you agree to the</span>
+                        <span>By signing up, you agree to the </span>
                         <Link to={"/termsconditions"}>
                           Terms of Service and Privacy Policy
                         </Link>
@@ -112,9 +115,6 @@ function SignupPage(props) {
             </form>
 
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <Box mt={4} mb={4}>
-              Already have account? <Link to={"/login"}> Login</Link>
-            </Box>
           </div>
         </Container>
       </div>

@@ -31,7 +31,6 @@ const types = [
   "market",
   "tour",
   "shop",
-  "market",
   "exploration",
 ];
 
