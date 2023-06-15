@@ -136,7 +136,7 @@ h2 {
   align-items: center;
   flex-wrap: wrap;
   height: 100px;
-  padding: 10px 15px;
+  padding: 10px 40px;
 }
 
 .nav-elements {
@@ -264,7 +264,7 @@ h2 {
   font-family: "Playfair Display", serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
 
   color: #000;
   border-radius: 50px;
