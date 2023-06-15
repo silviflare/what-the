@@ -35,7 +35,7 @@ function Navbar() {
 
               <Link to={`/profile`}>
                 <Button type="submit" variant="outlined" color="primary">
-                  <Person2Icon />
+                  <Person2Icon fontSize="large" />
                   &nbsp; <span> {user && user.name}</span>
                 </Button>
               </Link>

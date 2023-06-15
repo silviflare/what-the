@@ -63,14 +63,16 @@ function RandomActivity() {
         <div className="randonizer-container-headline">
           {oneActivity && (
             <div className="randonizer-headline">
-              <Balancer ratio={0.6}>{oneActivity.description}</Balancer>
-              <Link
-                to={oneActivity.mapsLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                ➙
-              </Link>
+              <Balancer ratio={0.6}>
+                {oneActivity.description}
+                <Link
+                  to={oneActivity.mapsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  &nbsp; ➙
+                </Link>
+              </Balancer>
             </div>
           )}
         </div>

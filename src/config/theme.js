@@ -34,6 +34,13 @@ export const theme = createTheme({
         },
       },
     },
+    MuiSvgIcon: {
+      styleOverrides: {
+        root: {
+          fontSize: "1.3rem",
+        },
+      },
+    },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
