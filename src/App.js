@@ -26,13 +26,31 @@ console.info({
 // Get the root element
 var r = document.querySelector(":root");
 
+// Mouse effect
+
+let gradient1 = 50;
+let gradient2 = 50;
+
+let gradient1To = 50;
+let gradient2To = 50;
+
+const trailingSpeed = 18;
+
 document.addEventListener("mousemove", (event) => {
-  const gradientValue = (event.screenX / window.screen.width) * 100;
-  const gradientValueHeight = (event.screenY / window.screen.height) * 100;
-  r.style.setProperty("--gradient-one", gradientValue + "%");
-  r.style.setProperty("--gradient-two", gradientValueHeight + "%");
-  // console.log("data mouseeeeeeeeee", gradientValue);
+  gradient1To = (event.screenX / window.screen.width) * 100;
+  gradient2To = (event.screenY / window.screen.height) * 100;
 });
+
+const animateOuterCursor = () => {
+  gradient1 += (gradient1To - gradient1) / trailingSpeed;
+  gradient2 += (gradient2To - gradient2) / trailingSpeed;
+  r.style.setProperty("--gradient-one", gradient1 + "%");
+  r.style.setProperty("--gradient-two", gradient2 + "%");
+
+  requestAnimationFrame(animateOuterCursor);
+};
+
+requestAnimationFrame(animateOuterCursor);
 
 function App() {
   return (

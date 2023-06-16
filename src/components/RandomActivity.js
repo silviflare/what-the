@@ -42,11 +42,13 @@ function RandomActivity() {
 
   return (
     <div className="randonizer-container">
-      <button className="randonizer-button" onClick={getRandomActivity}>
-        <p>
-          <Balancer ratio={0.6}>What the f✻✹✽ should I do today?</Balancer>
-        </p>
-      </button>
+      <div className="randonizer-button-bg">
+        <button className="randonizer-button" onClick={getRandomActivity}>
+          <p>
+            <Balancer ratio={0.6}>What the f✻✹✽ should I do today?</Balancer>
+          </p>
+        </button>
+      </div>
       <div className="randonizer-open-collapse">
         <IconButton
           className="randonizer-open-collapse"

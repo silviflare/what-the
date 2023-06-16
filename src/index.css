@@ -10,27 +10,30 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1rem;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:32px;'><text y='50%'>👈</text></svg>")
+      16 0,
+    auto;
 }
 
 .big-bg {
-  /*
   background-color: hsla(0, 0%, 100%, 1);
+  filter: blur(10px);
   background-image: radial-gradient(
       at var(--gradient-one) var(--gradient-two),
       hsla(0, 0%, 100%, 1) 0px,
-      transparent 50%
+      transparent 75%
     ),
-    radial-gradient(at 91% 11%, hsla(0, 0%, 100%, 1) 0px, transparent 50%),
-    radial-gradient(at 43% 43%, rgb(255, 186, 246) 0px, transparent 50%),
-    radial-gradient(at 41% 86%, hsla(236, 40%, 73%, 1) 0px, transparent 50%),
-    radial-gradient(at 7% 92%, hsla(0, 0%, 100%, 1) 0px, transparent 50%),
-    radial-gradient(at 72% 24%, hsla(242, 60%, 73%, 1) 0px, transparent 50%),
-    radial-gradient(at 70% 100%, hsla(0, 0%, 100%, 1) 0px, transparent 50%),
-    radial-gradient(at 50% 40%, rgb(255, 188, 192) 0px, transparent 50%),
-    radial-gradient(at 28% 59%, rgb(190, 175, 229) 0px, transparent 50%); */
-  background-image: url("/src/images/bg.jpg");
+    radial-gradient(at 31% 1%, hsla(174, 70%, 70%, 1) 0px, transparent 50%),
+    radial-gradient(at 31% 40%, hsla(260, 91%, 73%, 1) 0px, transparent 50%),
+    radial-gradient(at 46% 21%, hsla(315, 65%, 79%, 1) 0px, transparent 50%),
+    radial-gradient(at 30% 87%, hsla(209, 86%, 79%, 1) 0px, transparent 50%),
+    radial-gradient(at 59% 46%, hsla(217, 100%, 69%, 1) 0px, transparent 50%),
+    radial-gradient(at 78% 64%, hsla(176, 96%, 66%, 1) 0px, transparent 50%),
+    radial-gradient(at 4% 43%, hsla(233, 100%, 81%, 1) 0px, transparent 50%);
+
+  /* background-image: url("/src/images/bg.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
   top: 0;
   left: 0;
   position: absolute;
@@ -255,6 +258,16 @@ h2 {
   width: 100%;
   min-height: calc(100vh - 120px);
   margin-top: 120px;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:32px;'><text y='50%'>👈</text></svg>")
+      16 0,
+    auto;
+}
+
+.randonizer-button-bg {
+  width: 80vw;
+  align-self: center;
+  border-radius: 50px;
+  background: #000;
 }
 
 .randonizer-button {
@@ -270,7 +283,15 @@ h2 {
   border-radius: 50px;
   border: 1px solid #000;
   background: #ffdf6f;
-  cursor: pointer;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='54' viewport='0 0 100 100' style='fill:black;font-size:32px;'><text y='50%'>🚀</text></svg>")
+      16 0,
+    auto;
+  transform: translate(-3px, -3px);
+  transition: transform 0.2s;
+}
+
+.randonizer-button:hover {
+  transform: translate(0, 0);
 }
 
 @media (max-width: 800px) {
