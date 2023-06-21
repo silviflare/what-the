@@ -8,23 +8,16 @@ function AboutPage() {
 
   return (
     <div className="container-all text-pages">
-      <Container maxWidth="md">
+      <Container className="about-page" maxWidth="md">
         <h1>About</h1>
         <p>
-          ❓Sometimes you want to go out and do something but you don´t know
-          what
+          <span>❓</span> Sometimes you want to go out and do something but you
+          don´t know what <span> 🤷🏻‍♀️ </span>Sometimes you need someone else to
+          decide for you <span> 🖥️ </span>This "someone" could be a website{" "}
+          <span> 🤘 </span> You are on that website!
           <br />
           <br />
-          🤷🏻‍♀️ Sometimes you need someone else to decide for you
-          <br />
-          <br />
-          🖥️ This "someone" could be a website
-          <br />
-          <br />
-          🤘 You are on that website!
-          <br />
-          <br />
-          👋🏻 Hello! I´m{" "}
+          <span> 👋🏻 </span> Hello! I´m{" "}
           <a
             className="what-the"
             href="https://www.linkedin.com/in/silvia-sarmiento-guizan/"

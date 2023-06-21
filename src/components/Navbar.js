@@ -27,11 +27,11 @@ function Navbar() {
                 </Button>
               </Link>
 
-              <Link to="/about">
+              {/* <Link to="/about">
                 <Button type="submit" variant="contained" color="primary">
                   About
                 </Button>
-              </Link>
+              </Link> */}
 
               <Link to={`/profile`}>
                 <Button type="submit" variant="outlined" color="primary">
@@ -60,11 +60,11 @@ function Navbar() {
                 </Button>
               </Link>
 
-              <Link to="/about">
+              {/* <Link to="/about">
                 <Button type="submit" variant="contained" color="primary">
                   About
                 </Button>
-              </Link>
+              </Link> */}
             </div>
           )}
         </div>

@@ -153,10 +153,13 @@ h2 {
 .logo-navbar img {
   width: 80px;
 }
+
 .logo-container {
   /* z-index: 100; */
   position: relative;
 }
+
+/* NAV MOBILE  ---------------------------------------------------------------------- */
 
 .nav-mobile-elements-container {
   background-color: #ffffff;
@@ -245,6 +248,94 @@ h2 {
 
   .bar-three {
     transform: rotate(-45deg);
+  }
+}
+
+/* ABOUT SPINNER ---------------------------------------------------------------------- */
+
+.float-about-wrapper {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.float-about {
+  background-image: url("/src/images/arrow-about.svg");
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  bottom: 10px;
+  right: 10px;
+  z-index: 40;
+}
+
+.float-about-spinner {
+  /* background-image: url("/src/images/arrow-about.svg") no-repeat 50%; */
+  position: absolute;
+  width: 100px;
+  z-index: 60;
+  animation: rotation 4s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+/* ABOUT HORIZONTAL ---------------------------------------------------------------------- */
+
+.horizontal-about-wrapper {
+  width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.horizontal-about {
+  text-decoration: none;
+  line-height: 0;
+  color: #fff;
+  background-color: #000;
+  height: 30px;
+  width: 200%;
+  display: flex;
+  bottom: 0px;
+
+  white-space: nowrap;
+  position: absolute;
+  will-change: transform;
+  animation: horizontal-about-wrapper 8s linear infinite;
+}
+
+.horizontal-about p {
+  margin: 0;
+  position: absolute;
+  top: 15px;
+}
+
+@keyframes horizontal-about-wrapper {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+/* ABOUT PAGE  ---------------------------------------------------------------------- */
+
+@media (min-width: 800px) {
+  .about-page p {
+    vertical-align: middle;
+    font-size: 1.1rem;
+    text-align: center;
+    line-height: 2rem !important;
+  }
+  .about-page span {
+    font-size: 2rem;
   }
 }
 
@@ -400,13 +491,6 @@ h2 {
   margin-right: 20px;
   margin-top: 20px;
 }
-
-/* .profile-container-lists {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 40px;
-} */
 
 .one-list-profile {
   width: 100%;

@@ -16,6 +16,7 @@ import TermsPrivacyPage from "./pages/TermsPrivacyPage";
 import AboutPage from "./pages/AboutPage";
 import { API_URL } from "./config/config";
 import { SnackbarProvider } from "notistack";
+import About from "./components/About";
 
 console.info({
   API_URL,
@@ -59,6 +60,7 @@ function App() {
         <div className="page-background"></div>
         <Navbar />
         <NavbarMobile />
+        <About />
 
         <Routes>
           <Route exact path="/" element={<HomePage />} />
